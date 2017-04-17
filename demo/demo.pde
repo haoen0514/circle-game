@@ -19,4 +19,9 @@ void draw() {
   background(colOfBk);
   circle.update();
   circle.render();
+  circle.mouseSensed();
+}
+
+void mousePressed() {
+  circle.mousePressed();
 }
