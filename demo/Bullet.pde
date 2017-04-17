@@ -2,12 +2,14 @@ class Bullet {
 
   // states
   boolean flying = false;
+  boolean live = true;
 
   Circle circle;
   float angle;
   float finalAngle;
   float accel = 0.1;
 
+  int index;
   int division;
   float position;
 
@@ -15,8 +17,9 @@ class Bullet {
     circle = _c;
     angle = _a;
     division = circle.division;
-    index =  round(_a / (PI / circle.division));
-    finalAngle = round(_a / (PI / circle.division)) * (PI / circle.division);
+    index =  (round(_a / (2 * PI / division)) + division) % division;
+    println("ball index:" + index);
+    finalAngle = round(_a / (2 * PI / division)) * (2 * PI / circle.division);
     position = circle.sz;
   }
 
@@ -25,6 +28,9 @@ class Bullet {
 
     if (flying) {
       position += 2;
+      if (position > circle.outSz) {
+        live = false;
+      }
     }
 
   }
