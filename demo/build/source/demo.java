@@ -17,6 +17,7 @@ public class demo extends PApplet {
 // colors
 int colOfBk = color (30, 30, 30);
 int colOfCircle = color (200, 200, 200);
+int colOfOutCircle = color (54, 215, 183);
 int colOfLine = color (224, 130, 131);
 int colOfPoint = color (75, 119, 190);
 
@@ -44,19 +45,27 @@ class Circle {
   }
 
   public void update() {
-    angle += 0.01f;
+    angle = millis() / 1000.0f;
+    if (angle > 2 * PI) {
+      angle -= 2 * PI;
+    }
   }
 
   public void render() {
     pushMatrix();
 
     translate(width / 2, height / 2);
+    drawMainCircle();
+    drawLine();
+    drawOutCircle();
+    popMatrix();
+  }
+
+  public void drawMainCircle() {
     stroke(colOfLine);
     strokeWeight(2);
     fill(colOfCircle);
     ellipse(0, 0, sz, sz);
-    drawLine();
-    popMatrix();
   }
 
   public void drawLine() {
@@ -69,6 +78,13 @@ class Circle {
 
     stroke(colOfPoint);
     ellipse(xpos, ypos, 10, 10);
+  }
+
+  public void drawOutCircle() {
+    stroke(colOfOutCircle);
+    strokeWeight(2);
+    noFill();
+    ellipse(0, 0, sz * 1.9f, sz * 1.9f);
   }
 }
   public void settings() {  size(800, 800); }
