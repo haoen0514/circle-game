@@ -14,19 +14,62 @@ import java.io.IOException;
 
 public class demo extends PApplet {
 
-float sz = 400;
+// colors
+int colOfBk = color (30, 30, 30);
+int colOfCircle = color (200, 200, 200);
+int colOfLine = color (224, 130, 131);
+int colOfPoint = color (75, 119, 190);
+
+Circle circle;
 
 
 public void setup() {
   
-  background(30);
+  background(colOfBk);
+  circle = new Circle(width / 2);
 }
 
 
 public void draw() {
-  noStroke();
-  fill(200);
-  ellipse(width / 2, height / 2, sz, sz);
+  background(colOfBk);
+  circle.update();
+  circle.render();
+}
+class Circle {
+  float sz;
+  float angle = 0;
+
+  Circle(float _sz) {
+    sz = _sz;
+  }
+
+  public void update() {
+    angle += 0.01f;
+  }
+
+  public void render() {
+    pushMatrix();
+
+    translate(width / 2, height / 2);
+    stroke(colOfLine);
+    strokeWeight(2);
+    fill(colOfCircle);
+    ellipse(0, 0, sz, sz);
+    drawLine();
+    popMatrix();
+  }
+
+  public void drawLine() {
+    stroke(colOfLine);
+    strokeWeight(4);
+    float xpos =  sz / 2 * cos(angle);
+    float ypos =  sz / 2 * sin(angle);
+    line(0, 0, xpos, ypos);
+    ellipse(0, 0, 20, 20);
+
+    stroke(colOfPoint);
+    ellipse(xpos, ypos, 10, 10);
+  }
 }
   public void settings() {  size(800, 800); }
   static public void main(String[] passedArgs) {

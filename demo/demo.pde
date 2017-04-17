@@ -1,14 +1,21 @@
-float sz = 400;
+// colors
+color colOfBk = color (30, 30, 30);
+color colOfCircle = color (200, 200, 200);
+color colOfLine = color (224, 130, 131);
+color colOfPoint = color (75, 119, 190);
+
+Circle circle;
 
 
 void setup() {
   size(800, 800);
-  background(30);
+  background(colOfBk);
+  circle = new Circle(width / 2);
 }
 
 
 void draw() {
-  noStroke();
-  fill(200);
-  ellipse(width / 2, height / 2, sz, sz);
+  background(colOfBk);
+  circle.update();
+  circle.render();
 }
