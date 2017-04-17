@@ -8,6 +8,7 @@ class Circle {
   int division = 16;
 
   ArrayList<Bullet> bullets;
+  ArrayList<Enemy> enemies;
   boolean triggering = false;
   int currentIndex;
 
@@ -15,15 +16,25 @@ class Circle {
     sz = _sz;
     outSz = _sz * RATIO;
     bullets = new ArrayList<Bullet>();
+    enemies = new ArrayList<Enemy>();
   }
 
   void update() {
+    // rotate
     angle = millis() / 1000.0;
     if (angle > 2 * PI) {
       angle -= 2 * PI;
     }
+
+    // createEnemy
+    if (random(1) < 0.002) {
+      createEnemy();
+    }
+
     updateIndex();
     clearBullet();
+    clearEnemies();
+    checkCollision();
   }
 
   void render() {
@@ -35,6 +46,7 @@ class Circle {
     drawMainCircle();
     drawLine();
     drawBullets();
+    drawEnemies();
     popMatrix();
   }
 
@@ -53,6 +65,7 @@ class Circle {
     line(0, 0, xpos, ypos);
     ellipse(0, 0, 20, 20);
 
+    fill(colOfLine);
     stroke(colOfPoint);
     ellipse(xpos, ypos, 10, 10);
   }
@@ -73,6 +86,13 @@ class Circle {
     }
     triggering = false;
   }
+  void drawEnemies() {
+    for (int i = 0, n = enemies.size(); i < n; i++) {
+      Enemy e = enemies.get(i);
+      e.update();
+      e.render();
+    }
+  }
 
   // bullets control
   void updateIndex() {
@@ -87,6 +107,32 @@ class Circle {
       Bullet b = bullets.get(i);
       if (!b.live) {
         bullets.remove(b);
+      }
+    }
+  }
+
+  // enemies control
+  void createEnemy() {
+    enemies.add(new Enemy(this, floor(random(division))));
+  }
+  void clearEnemies() {
+    for (int i = enemies.size() - 1; i >= 0; i--) {
+      Enemy e = enemies.get(i);
+      if (!e.live) {
+        enemies.remove(e);
+      }
+    }
+  }
+
+  void checkCollision() {
+    for (int i = enemies.size() - 1; i >= 0; i--) {
+      Enemy e = enemies.get(i);
+      for (int j = bullets.size() - 1; j >= 0; j--) {
+        Bullet b = bullets.get(j);
+        if (e.index == b.index && b.position > e.position) {
+          e.live = false;
+          b.live = false;
+        }
       }
     }
   }
@@ -114,6 +160,5 @@ class Circle {
       bullets.add(new Bullet(this, mA));
     }
   }
-
 
 }

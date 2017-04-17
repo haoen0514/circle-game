@@ -21,19 +21,19 @@ int colOfCircle = color (51, 110, 123);
 int colOfOutCircle = color (51, 110, 123);
 int colOfLine = color (224, 130, 131);
 int colOfPoint = color (75, 119, 190);
+int colOfBullet = color (249, 105, 14);
+int colOfEnemy = color (192, 57, 43);
 
 Circle circle;
 
 
 public void setup() {
   
-  // background(colOfBk);
   circle = new Circle(width / 2);
 }
 
 
 public void draw() {
-  // background(colOfBk);
   circle.update();
   circle.render();
   circle.mouseSensed();
@@ -80,8 +80,9 @@ class Bullet {
   }
 
   public void render() {
-    fill(255, 0, 0);
-    stroke(255, 0, 0);
+    fill(colOfBullet);
+    stroke(colOfPoint);
+    strokeWeight(4);
     float xpos;
     float ypos;
     if (!flying) {
@@ -108,6 +109,7 @@ class Circle {
   int division = 16;
 
   ArrayList<Bullet> bullets;
+  ArrayList<Enemy> enemies;
   boolean triggering = false;
   int currentIndex;
 
@@ -115,15 +117,25 @@ class Circle {
     sz = _sz;
     outSz = _sz * RATIO;
     bullets = new ArrayList<Bullet>();
+    enemies = new ArrayList<Enemy>();
   }
 
   public void update() {
+    // rotate
     angle = millis() / 1000.0f;
     if (angle > 2 * PI) {
       angle -= 2 * PI;
     }
+
+    // createEnemy
+    if (random(1) < 0.002f) {
+      createEnemy();
+    }
+
     updateIndex();
     clearBullet();
+    clearEnemies();
+    checkCollision();
   }
 
   public void render() {
@@ -135,6 +147,7 @@ class Circle {
     drawMainCircle();
     drawLine();
     drawBullets();
+    drawEnemies();
     popMatrix();
   }
 
@@ -153,6 +166,7 @@ class Circle {
     line(0, 0, xpos, ypos);
     ellipse(0, 0, 20, 20);
 
+    fill(colOfLine);
     stroke(colOfPoint);
     ellipse(xpos, ypos, 10, 10);
   }
@@ -173,7 +187,13 @@ class Circle {
     }
     triggering = false;
   }
-
+  public void drawEnemies() {
+    for (int i = 0, n = enemies.size(); i < n; i++) {
+      Enemy e = enemies.get(i);
+      e.update();
+      e.render();
+    }
+  }
 
   // bullets control
   public void updateIndex() {
@@ -192,6 +212,31 @@ class Circle {
     }
   }
 
+  // enemies control
+  public void createEnemy() {
+    enemies.add(new Enemy(this, floor(random(division))));
+  }
+  public void clearEnemies() {
+    for (int i = enemies.size() - 1; i >= 0; i--) {
+      Enemy e = enemies.get(i);
+      if (!e.live) {
+        enemies.remove(e);
+      }
+    }
+  }
+
+  public void checkCollision() {
+    for (int i = enemies.size() - 1; i >= 0; i--) {
+      Enemy e = enemies.get(i);
+      for (int j = bullets.size() - 1; j >= 0; j--) {
+        Bullet b = bullets.get(j);
+        if (e.index == b.index && b.position > e.position) {
+          e.live = false;
+          b.live = false;
+        }
+      }
+    }
+  }
 
   // mouse
   public void mouseSensed() {
@@ -211,14 +256,53 @@ class Circle {
       mouseIn = false;
     }
   }
-
   public void mousePressed() {
     if (mouseIn) {
       bullets.add(new Bullet(this, mA));
     }
   }
 
+}
+class Enemy {
 
+  // states
+  boolean live = true;
+
+  Circle circle;
+  float angle;
+
+  int index;
+  int division;
+  float position;
+
+  Enemy(Circle _c, int _i) {
+    circle = _c;
+    division = circle.division;
+    index = _i;
+    println("enemy index:" + index);
+    angle = index * (2 * PI / division);
+    position = circle.outSz;
+  }
+
+  public void update() {
+    // angle += (finalAngle - angle) * accel;
+
+    position -= 0.5f;
+    if (position < circle.sz) {
+      live = false;
+    }
+  }
+
+  public void render() {
+    fill(colOfEnemy);
+    stroke(colOfPoint);
+    strokeWeight(4);
+    float xpos;
+    float ypos;
+    xpos = position * cos(angle) / 2;
+    ypos = position * sin(angle) / 2;
+    ellipse(xpos, ypos, 10, 10);
+  }
 }
   public void settings() {  size(800, 800); }
   static public void main(String[] passedArgs) {

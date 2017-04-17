@@ -36,8 +36,9 @@ class Bullet {
   }
 
   void render() {
-    fill(255, 0, 0);
-    stroke(255, 0, 0);
+    fill(colOfBullet);
+    stroke(colOfPoint);
+    strokeWeight(4);
     float xpos;
     float ypos;
     if (!flying) {

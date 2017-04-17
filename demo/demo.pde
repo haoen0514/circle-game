@@ -5,6 +5,8 @@ color colOfCircle = color (51, 110, 123);
 color colOfOutCircle = color (51, 110, 123);
 color colOfLine = color (224, 130, 131);
 color colOfPoint = color (75, 119, 190);
+color colOfBullet = color (249, 105, 14);
+color colOfEnemy = color (192, 57, 43);
 
 Circle circle;
 
