@@ -2,7 +2,7 @@
 
 A special shooter-tempo game!
 
-![logo](https://github.com/vibertthio/circle-game/logo.png)
+![logo](https://github.com/vibertthio/circle-game/blob/master/images/logo.png)
 
 
 ## Getting Started
@@ -27,7 +27,7 @@ You will need to download the library of oscP5 in processing.
 
 
 ### Game Play
-![screenshot](![logo](https://github.com/vibertthio/circle-game/screenshot.png)
+![screenshot](https://github.com/vibertthio/circle-game/blob/master/images/screenshot.png)
 
 
 ## Authors
