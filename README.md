@@ -2,6 +2,9 @@
 
 A special shooter-tempo game!
 
+![logo](https://github.com/vibertthio/circle-game/logo.png)
+
+
 ## Getting Started
 
 ```
@@ -21,6 +24,10 @@ install processing 3.x
 ### Installing
 
 You will need to download the library of oscP5 in processing.
+
+
+### Game Play
+![screenshot](![logo](https://github.com/vibertthio/circle-game/screenshot.png)
 
 
 ## Authors
