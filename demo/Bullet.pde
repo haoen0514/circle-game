@@ -30,6 +30,7 @@ class Bullet {
       position += 2;
       if (position > circle.outSz) {
         live = false;
+        gameOver = true;
       }
     }
 

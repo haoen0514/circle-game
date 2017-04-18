@@ -3,6 +3,7 @@ class Circle {
   float sz;
   float outSz;
   float angle = 0;
+  float lastAngle = 0;
   float mA;
   boolean mouseIn = false;
   int division = 16;
@@ -21,20 +22,34 @@ class Circle {
 
   void update() {
     // rotate
-    angle = millis() / 1000.0;
+    println("angle:" + angle);
+    angle = (millis() / 1000.0) - lastAngle;
     if (angle > 2 * PI) {
-      angle -= 2 * PI;
+      lastAngle = (millis() / 1000.0);
+      create();
     }
 
     // createEnemy
-    if (random(1) < 0.002) {
-      createEnemy();
-    }
-
     updateIndex();
     clearBullet();
     clearEnemies();
     checkCollision();
+  }
+
+  void create() {
+    if (ptn == 1) {
+      createEnemy(0);
+    }
+    if (ptn == 2) {
+      createEnemy(0);
+      createEnemy(8);
+    }
+    if (ptn == 3) {
+      createEnemy(0);
+      createEnemy(4);
+      createEnemy(8);
+      createEnemy(12);
+    }
   }
 
   void render() {
@@ -82,6 +97,7 @@ class Circle {
       b.render();
       if (triggering && b.index == currentIndex) {
         b.trigger();
+        bullets.add(new Bullet(this, b.angle));
       }
     }
     triggering = false;
@@ -115,6 +131,9 @@ class Circle {
   void createEnemy() {
     enemies.add(new Enemy(this, floor(random(division))));
   }
+  void createEnemy(int i) {
+    enemies.add(new Enemy(this, i % division));
+  }
   void clearEnemies() {
     for (int i = enemies.size() - 1; i >= 0; i--) {
       Enemy e = enemies.get(i);
@@ -132,6 +151,7 @@ class Circle {
         if (e.index == b.index && b.position > e.position) {
           e.live = false;
           b.live = false;
+          sendOSC(e.index);
         }
       }
     }

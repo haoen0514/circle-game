@@ -22,9 +22,10 @@ class Enemy {
   void update() {
     // angle += (finalAngle - angle) * accel;
 
-    position -= 0.5;
+    position -= 0.2;
     if (position < circle.sz) {
       live = false;
+      gameOver = true;
     }
   }
 

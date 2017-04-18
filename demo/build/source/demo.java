@@ -3,6 +3,9 @@ import processing.data.*;
 import processing.event.*; 
 import processing.opengl.*; 
 
+import oscP5.*; 
+import netP5.*; 
+
 import java.util.HashMap; 
 import java.util.ArrayList; 
 import java.io.File; 
@@ -13,6 +16,13 @@ import java.io.OutputStream;
 import java.io.IOException; 
 
 public class demo extends PApplet {
+
+
+
+
+//oscP5
+OscP5 oscP5;
+NetAddress other;
 
 // colors
 int colOfBk = color (44, 62, 80);
@@ -25,22 +35,77 @@ int colOfBullet = color (249, 105, 14);
 int colOfEnemy = color (192, 57, 43);
 
 Circle circle;
-
+boolean gameOver = false;
+int ptn = 0;
 
 public void setup() {
   
   circle = new Circle(width / 2);
+
+  //oscP5
+  oscP5 = new OscP5(this, 12000);
+  other = new NetAddress("127.0.0.1", 12001);
+
+  //text
+  textAlign(CENTER, BOTTOM);
 }
 
 
 public void draw() {
-  circle.update();
-  circle.render();
-  circle.mouseSensed();
+  if (gameOver) {
+    background(colOfCircle);
+    fill(colOfLine);
+    textSize(64);
+    text("Game Over", width / 2, height / 2);
+    textSize(32);
+    text("press mouse to restart", width / 2, height / 2 + 50);
+  } else {
+    circle.update();
+    circle.render();
+    circle.mouseSensed();
+  }
 }
 
 public void mousePressed() {
-  circle.mousePressed();
+  if (!gameOver) {
+    circle.mousePressed();
+  } else {
+    circle = new Circle(width / 2);
+    gameOver = false;
+  }
+}
+
+public void sendOSC(int x) {
+  OscMessage msg = new OscMessage("/p5");
+  msg.add(x);
+  oscP5.send(msg, other);
+}
+
+public void keyPressed() {
+  if (!gameOver) {
+    if (key == 'a') {
+      circle.createEnemy();
+    }
+  } else {
+    circle = new Circle(width / 2);
+    gameOver = false;
+  }
+
+  if (key == '1') {
+    triggerPattern(1);
+  }
+  if (key == '2') {
+    triggerPattern(2);
+  }
+  if (key == '3') {
+    triggerPattern(3);
+  }
+}
+
+
+
+public void triggerPattern(int i) {
+  ptn = i;
 }
 class Bullet {
 
@@ -74,6 +139,7 @@ class Bullet {
       position += 2;
       if (position > circle.outSz) {
         live = false;
+        gameOver = true;
       }
     }
 
@@ -104,6 +170,7 @@ class Circle {
   float sz;
   float outSz;
   float angle = 0;
+  float lastAngle = 0;
   float mA;
   boolean mouseIn = false;
   int division = 16;
@@ -122,20 +189,34 @@ class Circle {
 
   public void update() {
     // rotate
-    angle = millis() / 1000.0f;
+    println("angle:" + angle);
+    angle = (millis() / 1000.0f) - lastAngle;
     if (angle > 2 * PI) {
-      angle -= 2 * PI;
+      lastAngle = (millis() / 1000.0f);
+      create();
     }
 
     // createEnemy
-    if (random(1) < 0.002f) {
-      createEnemy();
-    }
-
     updateIndex();
     clearBullet();
     clearEnemies();
     checkCollision();
+  }
+
+  public void create() {
+    if (ptn == 1) {
+      createEnemy(0);
+    }
+    if (ptn == 2) {
+      createEnemy(0);
+      createEnemy(8);
+    }
+    if (ptn == 3) {
+      createEnemy(0);
+      createEnemy(4);
+      createEnemy(8);
+      createEnemy(12);
+    }
   }
 
   public void render() {
@@ -183,6 +264,7 @@ class Circle {
       b.render();
       if (triggering && b.index == currentIndex) {
         b.trigger();
+        bullets.add(new Bullet(this, b.angle));
       }
     }
     triggering = false;
@@ -216,6 +298,9 @@ class Circle {
   public void createEnemy() {
     enemies.add(new Enemy(this, floor(random(division))));
   }
+  public void createEnemy(int i) {
+    enemies.add(new Enemy(this, i % division));
+  }
   public void clearEnemies() {
     for (int i = enemies.size() - 1; i >= 0; i--) {
       Enemy e = enemies.get(i);
@@ -233,6 +318,7 @@ class Circle {
         if (e.index == b.index && b.position > e.position) {
           e.live = false;
           b.live = false;
+          sendOSC(e.index);
         }
       }
     }
@@ -287,9 +373,10 @@ class Enemy {
   public void update() {
     // angle += (finalAngle - angle) * accel;
 
-    position -= 0.5f;
+    position -= 0.2f;
     if (position < circle.sz) {
       live = false;
+      gameOver = true;
     }
   }
 
@@ -304,7 +391,7 @@ class Enemy {
     ellipse(xpos, ypos, 10, 10);
   }
 }
-  public void settings() {  size(800, 800); }
+  public void settings() {  size(400, 400); }
   static public void main(String[] passedArgs) {
     String[] appletArgs = new String[] { "demo" };
     if (passedArgs != null) {
