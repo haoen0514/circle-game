@@ -6,18 +6,20 @@ using System.Collections.Generic;
 
 public class PointerMovementScript : MonoBehaviour {
 
-	public float bpm = 30f;
 	public GameObject pointer;
 	public GameObject centerP;
 	public Rigidbody ball;
+	public GameTempoScript GameTempoScript;
 
 	void Start () {
 	
 	}
 
-	void Update () {
-	    float toDegree = 360f / bpm;
-		pointer.transform.Rotate (Vector3.forward * toDegree);
+	void Update () {	
+		if (GameTempoScript.start) {
+			float degPerSec = 360f / GameTempoScript.secPerRound;
+			pointer.transform.Rotate (Vector3.forward * degPerSec * Time.deltaTime);
+		}
 	}
 
 //	void OnTriggerEnter(Collider other){
