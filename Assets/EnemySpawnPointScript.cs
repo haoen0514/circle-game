@@ -10,7 +10,7 @@ public class EnemySpawnPointScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		InvokeRepeating ("SpawnEnemy", 0f, 2f);
+//		InvokeRepeating ("SpawnEnemy", 0f, 2f);
 	}
 	
 	// Update is called once per frame
@@ -18,7 +18,7 @@ public class EnemySpawnPointScript : MonoBehaviour {
 		
 	}
 
-	void SpawnEnemy(){
+	public void SpawnEnemy(){
 		Rigidbody instantiatedProjectile = Instantiate (enemy,
 			this.gameObject.transform.position,
 			this.gameObject.transform.rotation)
