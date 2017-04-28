@@ -15,9 +15,6 @@ public class EnemyScript : MonoBehaviour {
 	}
 	void OnTriggerEnter(Collider other){
 		if (other.name == "Sphere(Clone)") {
-			ps = Instantiate (enemyKillEffect,
-				this.gameObject.transform.position,
-				this.gameObject.transform.rotation);
 			
 			Destroy (this.gameObject);
 		}	
