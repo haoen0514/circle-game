@@ -20,7 +20,7 @@ public class PointerMovementScript : MonoBehaviour {
 		pointer.transform.Rotate (Vector3.forward * toDegree);
 	}
 
-	void OnTriggerEnter(Collider other){
+//	void OnTriggerEnter(Collider other){
 //		Debug.Log (other.gameObject.name);
 //		if (other.gameObject.name != "Sphere(Clone)") {
 //			Rigidbody instantiatedProjectile = Instantiate (ball,
@@ -29,6 +29,6 @@ public class PointerMovementScript : MonoBehaviour {
 //			as Rigidbody;
 //			instantiatedProjectile.velocity =  new Vector3 (other.gameObject.transform.position.x/4, other.gameObject.transform.position.y/4, 0);
 //		}
-
-	}
+//
+//	}
 }

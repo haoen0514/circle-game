@@ -14,17 +14,9 @@ public class ShpereScript : MonoBehaviour {
 	}
 	void OnTriggerEnter(Collider other){
 		print (other.name);
-		if (other.gameObject.name == "Sphere(Clone)") {
-			Debug.Log ("fuck"+gameObject.name);
+		if (other.gameObject.name == "Enemy(Clone)") {
+			Debug.Log (gameObject.name);
 			Destroy (this.gameObject);
 		}
-	}
-	void OnCollisionEnter(Collision other){
-//		print (other.gameObject.name);
-//		if (other.gameObject.name == "Sphere(Clone)") {
-//			Debug.Log ("fuck");
-//			Destroy (this.gameObject);
-//		}
-	
 	}
 }

@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class TurretScript : MonoBehaviour {
-
+	public Rigidbody bullet;
+	private bool shoot = false;
 	// Use this for initialization
 	void Start () {
 	
@@ -14,5 +15,23 @@ public class TurretScript : MonoBehaviour {
 	}
 	void OnMouseDown(){
 		Debug.Log (this.gameObject.name);
+		if (shoot == true)
+			shoot = false;
+		else
+			shoot = true;
+
+	}
+	void OnTriggerEnter(Collider other){
+		if (shoot == true) {
+			Debug.Log (other.gameObject.name);
+			if (other.gameObject.name == "Pointer") {
+				Rigidbody instantiatedProjectile = Instantiate (bullet,
+					                                  this.gameObject.transform.position,
+					                                  this.gameObject.transform.rotation)
+				as Rigidbody;
+				instantiatedProjectile.velocity = new Vector3 (this.gameObject.transform.position.x / 4, this.gameObject.transform.position.y / 4, 0);
+			}
+		}
+
 	}
 }
