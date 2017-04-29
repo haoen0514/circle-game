@@ -15,10 +15,14 @@ public class TurretScript : MonoBehaviour {
 	}
 	void OnMouseDown(){
 		Debug.Log (this.gameObject.name);
-		if (shoot == true)
+		if (shoot == true) {
 			shoot = false;
-		else
+			this.transform.GetChild (0).gameObject.SetActive (false);
+
+		} else {
+			this.transform.GetChild (0).gameObject.SetActive (true);
 			shoot = true;
+		}
 
 	}
 	void OnTriggerEnter(Collider other){
