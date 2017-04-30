@@ -4,6 +4,8 @@ using System.Collections;
 public class TurretScript : MonoBehaviour {
 	public Rigidbody bullet;
 	private bool shoot = false;
+	Setup setUpScript;
+	GameTempoScript gameTempoScript;
 	// Use this for initialization
 	void Start () {
 	
@@ -18,7 +20,6 @@ public class TurretScript : MonoBehaviour {
 		if (shoot == true) {
 			shoot = false;
 			this.transform.GetChild (0).gameObject.SetActive (false);
-
 		} else {
 			this.transform.GetChild (0).gameObject.SetActive (true);
 			shoot = true;
@@ -33,7 +34,7 @@ public class TurretScript : MonoBehaviour {
 					                                  this.gameObject.transform.position,
 					                                  this.gameObject.transform.rotation)
 				as Rigidbody;
-				instantiatedProjectile.velocity = new Vector3 (this.gameObject.transform.position.x / 4, this.gameObject.transform.position.y / 4, 0);
+				instantiatedProjectile.velocity = new Vector3 (this.gameObject.transform.position.x, this.gameObject.transform.position.y, 0).normalized;
 			}
 		}
 

@@ -4,7 +4,7 @@ using System.Collections;
 public class EnemyScript : MonoBehaviour {
 	public ParticleSystem enemyKillEffect;
 	// Use this for initialization
-	public ParticleSystem ps;
+	private Object ps;
 	void Start () {
 		
 	}
@@ -15,8 +15,11 @@ public class EnemyScript : MonoBehaviour {
 	}
 	void OnTriggerEnter(Collider other){
 		if (other.name == "Sphere(Clone)") {
-			
-			Destroy (this.gameObject);
+			ps = Instantiate (enemyKillEffect,
+				                    this.gameObject.transform.position,
+				                    this.gameObject.transform.rotation);
+
+			Destroy(this.gameObject);
 		}	
 	}
 }

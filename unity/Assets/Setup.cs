@@ -22,6 +22,8 @@ public class Setup : MonoBehaviour {
 		}
 	}
 	void Update(){
-		
+	}
+	public void ChangeBigCircleR(float radius){
+		bigCircleRadius = radius;
 	}
 }
