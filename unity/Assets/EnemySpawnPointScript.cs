@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-
+using UnityEngine.UI;
 
 public class EnemySpawnPointScript : MonoBehaviour {
 
 	public Rigidbody enemy;
-	public List<bool> game = new List<bool>();
+	public Text gameOverText;
 
 	// Use this for initialization
 	void Start () {
@@ -25,5 +25,11 @@ public class EnemySpawnPointScript : MonoBehaviour {
 			as Rigidbody;
 		instantiatedProjectile.velocity =  new Vector3 (-this.gameObject.transform.position.x, -this.gameObject.transform.position.y, 0).normalized;
 		instantiatedProjectile.velocity = instantiatedProjectile.velocity * 0.5f;
+	}
+	void OnTriggerEnter(Collider other){
+
+		if (other.gameObject.name == "Sphere(Clone)") {
+			gameOverText.gameObject.SetActive (true);
+		}
 	}
 }

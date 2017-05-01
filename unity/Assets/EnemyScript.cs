@@ -1,10 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class EnemyScript : MonoBehaviour {
 	public ParticleSystem enemyKillEffect;
-	// Use this for initialization
 	private Object ps;
+	public Text gameOver;
+	public Text scoreText;
+	public ScoreScript scoreScript;
+
+
 	void Start () {
 		
 	}
@@ -14,12 +20,13 @@ public class EnemyScript : MonoBehaviour {
 	
 	}
 	void OnTriggerEnter(Collider other){
-		if (other.name == "Sphere(Clone)") {
+		if (other.name == "Sphere(Clone)" || other.gameObject.name == "EnemyCollider") {
 			ps = Instantiate (enemyKillEffect,
 				                    this.gameObject.transform.position,
 				                    this.gameObject.transform.rotation);
-
+//			scoreScript.AddScore ();
 			Destroy(this.gameObject);
+
 		}	
 	}
 }

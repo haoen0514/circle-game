@@ -11,7 +11,7 @@ public class GameTempoScript : MonoBehaviour {
 	private int currentCount = 0;
 	private float roundPerMin;
 	public float secPerRound;
-	Setup setup;
+	public Setup setup;
 	// Use this for initialization
 	void Start () {
 	}
