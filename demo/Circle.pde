@@ -22,10 +22,10 @@ class Circle {
 
   void update() {
     // rotate
-    println("angle:" + angle);
-    angle = (millis() / 1000.0) - lastAngle;
+    // println("angle:" + angle);
+    angle = (millis() / 200.0) - lastAngle;
     if (angle > 2 * PI) {
-      lastAngle = (millis() / 1000.0);
+      lastAngle = (millis() / 200.0);
       create();
     }
 

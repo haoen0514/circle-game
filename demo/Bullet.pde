@@ -18,7 +18,7 @@ class Bullet {
     angle = _a;
     division = circle.division;
     index =  (round(_a / (2 * PI / division)) + division) % division;
-    println("ball index:" + index);
+    // println("ball index:" + index);
     finalAngle = round(_a / (2 * PI / division)) * (2 * PI / circle.division);
     position = circle.sz;
   }

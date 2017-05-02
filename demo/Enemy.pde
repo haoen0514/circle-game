@@ -14,7 +14,7 @@ class Enemy {
     circle = _c;
     division = circle.division;
     index = _i;
-    println("enemy index:" + index);
+    // println("enemy index:" + index);
     angle = index * (2 * PI / division);
     position = circle.outSz;
   }
