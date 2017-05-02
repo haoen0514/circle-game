@@ -14,7 +14,7 @@ public class TurretScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown (KeyCode.Alpha1)) {
+		if (Input.GetKeyDown (KeyCode.Keypad6)) {
 			if (this.gameObject.transform.GetChild (0).gameObject.GetComponent<BoxCollider> ().enabled) {
 				this.gameObject.transform.GetChild (0).gameObject.GetComponent<BoxCollider> ().enabled = false;
 				this.gameObject.transform.GetChild (0).transform.GetChild (0).gameObject.SetActive (false);
