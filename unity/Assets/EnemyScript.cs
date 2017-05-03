@@ -6,10 +6,6 @@ using UnityEngine.UI;
 public class EnemyScript : MonoBehaviour {
 	public ParticleSystem enemyKillEffect;
 	private Object ps;
-	public Text gameOver;
-	public Text scoreText;
-	public ScoreScript scoreScript;
-
 
 	void Start () {
 		

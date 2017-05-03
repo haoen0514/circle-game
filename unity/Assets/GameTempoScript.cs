@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 public class GameTempoScript : MonoBehaviour {
 
-	public List<bool> gameTempo = new List<bool> ();
+//	public List<bool> gameTempo = new List<bool> ();
+	private bool[,] gameTempo = new bool[30, 30];
 	public int tempo = 1;
 	public int bpm;
 	public bool start = false;
@@ -14,7 +15,12 @@ public class GameTempoScript : MonoBehaviour {
 	public Setup setup;
 	// Use this for initialization
 	void Start () {
+		gameTempo [0, 3] = true;
+		gameTempo [0, 4] = true;
+		gameTempo [1, 5] = true;
+
 	}
+
 	
 	// Update is called once per frame
 	void Update () {
@@ -22,7 +28,7 @@ public class GameTempoScript : MonoBehaviour {
 			start = !start;
 		roundPerMin = bpm / 4f;
 		secPerRound = 60 / roundPerMin;
-		if (start == true && currentCount < gameTempo.Count) {
+		if (start == true) {
 			if (timer > secPerRound) {
 				Spawn ();
 				timer = 0f;
@@ -34,11 +40,17 @@ public class GameTempoScript : MonoBehaviour {
 		}
 	}
 	void Spawn(){
-		for (int i = 0; i < tempo; i++) {
-			if (gameTempo [currentCount+i] == true) {
-				this.gameObject.transform.GetChild ((currentCount + i) % tempo).GetComponent<EnemySpawnPointScript> ().SpawnEnemy ();
+//		for (int i = 0; i < tempo; i++) {
+//			if (gameTempo [currentCount+i] == true) {
+//				this.gameObject.transform.GetChild ((currentCount + i) % tempo).GetComponent<EnemySpawnPointScript> ().SpawnEnemy ();
+//			}
+//		}
+//		currentCount += tempo;
+		for(int i = 0; i < tempo; i++){
+			if (gameTempo [currentCount, i] == true) {
+				this.gameObject.transform.GetChild (i).GetComponent<EnemySpawnPointScript> ().SpawnEnemy ();
 			}
 		}
-		currentCount += tempo;
+		currentCount += 1;
 	}
 }
