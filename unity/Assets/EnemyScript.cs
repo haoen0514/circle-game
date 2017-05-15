@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class EnemyScript : MonoBehaviour {
 	public ParticleSystem enemyKillEffect;
 	private Object ps;
-
+	private AudioSource audio;
 	void Start () {
-		
+		audio = this.gameObject.GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame
@@ -20,8 +20,10 @@ public class EnemyScript : MonoBehaviour {
 			ps = Instantiate (enemyKillEffect,
 				                    this.gameObject.transform.position,
 				                    this.gameObject.transform.rotation);
-//			scoreScript.AddScore ();
+//			audio.Play ();
+			Debug.Log ("MingWei123");
 			Destroy(this.gameObject);
+
 
 		}	
 	}

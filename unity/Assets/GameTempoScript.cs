@@ -13,12 +13,12 @@ public class GameTempoScript : MonoBehaviour {
 	private float roundPerMin;
 	public float secPerRound;
 	public Setup setup;
+	private AudioSource audio;
 	// Use this for initialization
 	void Start () {
 		gameTempo [0, 3] = true;
 		gameTempo [0, 4] = true;
 		gameTempo [1, 5] = true;
-
 	}
 
 	
