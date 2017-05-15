@@ -14,7 +14,7 @@ public class TurretScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown (KeyCode.Keypad6)) {
+		if (Input.GetKeyDown (KeyCode.Keypad6) || Input.GetKeyDown (KeyCode.K)) {
 			if (this.gameObject.transform.GetChild (0).gameObject.GetComponent<BoxCollider> ().enabled) {
 				this.gameObject.transform.GetChild (0).gameObject.GetComponent<BoxCollider> ().enabled = false;
 				this.gameObject.transform.GetChild (0).transform.GetChild (0).gameObject.SetActive (false);
@@ -22,7 +22,7 @@ public class TurretScript : MonoBehaviour {
 				this.gameObject.transform.GetChild (0).gameObject.GetComponent<BoxCollider> ().enabled = true;
 				this.gameObject.transform.GetChild (0).transform.GetChild (0).gameObject.SetActive (true);
 			}
-		} else if (Input.GetKeyDown (KeyCode.Keypad9)) {
+		} else if (Input.GetKeyDown (KeyCode.Keypad9) || Input.GetKeyDown (KeyCode.I)) {
 			if (this.gameObject.transform.GetChild (1).gameObject.GetComponent<BoxCollider> ().enabled) {
 				this.gameObject.transform.GetChild (1).gameObject.GetComponent<BoxCollider> ().enabled = false;
 				this.gameObject.transform.GetChild (1).transform.GetChild (0).gameObject.SetActive (false);
@@ -30,7 +30,7 @@ public class TurretScript : MonoBehaviour {
 				this.gameObject.transform.GetChild (1).gameObject.GetComponent<BoxCollider> ().enabled = true;
 				this.gameObject.transform.GetChild (1).transform.GetChild (0).gameObject.SetActive (true);
 			}
-		} else if (Input.GetKeyDown (KeyCode.Keypad8)) {
+		} else if (Input.GetKeyDown (KeyCode.Keypad8) || Input.GetKeyDown (KeyCode.U)) {
 			if (this.gameObject.transform.GetChild (2).gameObject.GetComponent<BoxCollider> ().enabled) {
 				this.gameObject.transform.GetChild (2).gameObject.GetComponent<BoxCollider> ().enabled = false;
 				this.gameObject.transform.GetChild (2).transform.GetChild (0).gameObject.SetActive (false);
@@ -38,7 +38,7 @@ public class TurretScript : MonoBehaviour {
 				this.gameObject.transform.GetChild (2).gameObject.GetComponent<BoxCollider> ().enabled = true;
 				this.gameObject.transform.GetChild (2).transform.GetChild (0).gameObject.SetActive (true);
 			}
-		} else if (Input.GetKeyDown (KeyCode.Keypad7)) {
+		} else if (Input.GetKeyDown (KeyCode.Keypad7) || Input.GetKeyDown (KeyCode.Y)) {
 			if (this.gameObject.transform.GetChild (3).gameObject.GetComponent<BoxCollider> ().enabled) {
 				this.gameObject.transform.GetChild (3).gameObject.GetComponent<BoxCollider> ().enabled = false;
 				this.gameObject.transform.GetChild (3).transform.GetChild (0).gameObject.SetActive (false);
@@ -46,7 +46,7 @@ public class TurretScript : MonoBehaviour {
 				this.gameObject.transform.GetChild (3).gameObject.GetComponent<BoxCollider> ().enabled = true;
 				this.gameObject.transform.GetChild (3).transform.GetChild (0).gameObject.SetActive (true);
 			}
-		} else if (Input.GetKeyDown (KeyCode.Keypad4)) {
+		} else if (Input.GetKeyDown (KeyCode.Keypad4) || Input.GetKeyDown (KeyCode.G)) {
 			if (this.gameObject.transform.GetChild (4).gameObject.GetComponent<BoxCollider> ().enabled) {
 				this.gameObject.transform.GetChild (4).gameObject.GetComponent<BoxCollider> ().enabled = false;
 				this.gameObject.transform.GetChild (4).transform.GetChild (0).gameObject.SetActive (false);
@@ -54,7 +54,7 @@ public class TurretScript : MonoBehaviour {
 				this.gameObject.transform.GetChild (4).gameObject.GetComponent<BoxCollider> ().enabled = true;
 				this.gameObject.transform.GetChild (4).transform.GetChild (0).gameObject.SetActive (true);
 			}
-		} else if (Input.GetKeyDown (KeyCode.Keypad1)) {
+		} else if (Input.GetKeyDown (KeyCode.Keypad1) || Input.GetKeyDown (KeyCode.B)) {
 			if (this.gameObject.transform.GetChild (5).gameObject.GetComponent<BoxCollider> ().enabled) {
 				this.gameObject.transform.GetChild (5).gameObject.GetComponent<BoxCollider> ().enabled = false;
 				this.gameObject.transform.GetChild (5).transform.GetChild (0).gameObject.SetActive (false);
@@ -62,7 +62,7 @@ public class TurretScript : MonoBehaviour {
 				this.gameObject.transform.GetChild (5).gameObject.GetComponent<BoxCollider> ().enabled = true;
 				this.gameObject.transform.GetChild (5).transform.GetChild (0).gameObject.SetActive (true);
 			}
-		} else if (Input.GetKeyDown (KeyCode.Keypad2)) {
+		} else if (Input.GetKeyDown (KeyCode.Keypad2) || Input.GetKeyDown (KeyCode.N)) {
 			if (this.gameObject.transform.GetChild (6).gameObject.GetComponent<BoxCollider> ().enabled) {
 				this.gameObject.transform.GetChild (6).gameObject.GetComponent<BoxCollider> ().enabled = false;
 				this.gameObject.transform.GetChild (6).transform.GetChild (0).gameObject.SetActive (false);
@@ -71,7 +71,7 @@ public class TurretScript : MonoBehaviour {
 				this.gameObject.transform.GetChild (6).transform.GetChild (0).gameObject.SetActive (true);
 			}
 		}
-		else if (Input.GetKeyDown (KeyCode.Keypad3)) {
+		else if (Input.GetKeyDown (KeyCode.Keypad3) || Input.GetKeyDown (KeyCode.M)) {
 			if (this.gameObject.transform.GetChild (7).gameObject.GetComponent<BoxCollider> ().enabled) {
 				this.gameObject.transform.GetChild (7).gameObject.GetComponent<BoxCollider> ().enabled = false;
 				this.gameObject.transform.GetChild (7).transform.GetChild (0).gameObject.SetActive (false);
