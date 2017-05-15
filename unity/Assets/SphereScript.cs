@@ -15,8 +15,7 @@ public class SphereScript : MonoBehaviour {
 
 	}
 	void OnTriggerEnter(Collider other){
-		print (other.name);
-		if (other.gameObject.name == "Enemy(Clone)") {
+		if (other.gameObject.name == "Enemy(Clone)" || other.gameObject.name == "Enemy (1)(Clone)"  || other.gameObject.name == "Enemy (2)(Clone)" || other.gameObject.name == "Enemy (3)(Clone)" || other.gameObject.name == "Enemy (4)(Clone)" || other.gameObject.name == "Enemy (5)(Clone)" || other.gameObject.name == "Enemy (6)(Clone)" || other.gameObject.name == "Enemy (7)(Clone)") {
 			Debug.Log (gameObject.name);
 			Destroy (this.gameObject);
 		}

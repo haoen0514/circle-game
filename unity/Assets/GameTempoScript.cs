@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class GameTempoScript : MonoBehaviour {
 
 //	public List<bool> gameTempo = new List<bool> ();
-	private bool[,] gameTempo = new bool[30, 30];
+	public bool[,] gameTempo = new bool[30, 30];
 	public int tempo = 1;
 	public int bpm;
 	public bool start = false;
@@ -14,8 +14,13 @@ public class GameTempoScript : MonoBehaviour {
 	public float secPerRound;
 	public Setup setup;
 	private AudioSource audio;
-	// Use this for initialization
+	// Use this for initializations
 	void Start () {
+		for (int i = 0; i < 30; i++) {
+			for (int j = 0; j < 8; j++)
+				if (Random.value > -1)
+					gameTempo [i, j] = true;
+		}
 		gameTempo [0, 3] = true;
 		gameTempo [0, 4] = true;
 		gameTempo [1, 5] = true;

@@ -24,7 +24,7 @@ public class EnemySpawnPointScript : MonoBehaviour {
 			this.gameObject.transform.rotation)
 			as Rigidbody;
 		instantiatedProjectile.velocity =  new Vector3 (-this.gameObject.transform.position.x, -this.gameObject.transform.position.y, 0).normalized;
-		instantiatedProjectile.velocity = instantiatedProjectile.velocity * 0.5f;
+		instantiatedProjectile.velocity = instantiatedProjectile.velocity * 0.8f;
 	}
 	void OnTriggerEnter(Collider other){
 

@@ -13,7 +13,7 @@ public class Setup : MonoBehaviour {
 	void Start(){
 		smallCircle.transform.localScale = new Vector3 (2*smallCircleRadius / smallCircle.GetComponent<Renderer> ().bounds.size.x, 2*smallCircleRadius / smallCircle.GetComponent<Renderer> ().bounds.size.y, 0);
 		bigCircle.transform.localScale = new Vector3 (2*bigCircleRadius / bigCircle.GetComponent<Renderer> ().bounds.size.x, 2*bigCircleRadius / bigCircle.GetComponent<Renderer> ().bounds.size.y, 0);
-		pointer.transform.localScale = new Vector3 (0.5f, smallCircleRadius / pointer.GetComponent<Renderer> ().bounds.size.y, 0);
+		pointer.transform.localScale = new Vector3 (3f, 2*smallCircleRadius / pointer.GetComponent<Renderer> ().bounds.size.y, 0);
 		for (int i = 0; i < turretEightPointList.Count; i++) {
 			turretEightPointList [i].transform.position = new Vector3 (smallCircleRadius * Mathf.Cos (i * (2 * Mathf.PI / turretEightPointList.Count)), smallCircleRadius * Mathf.Sin (i * (2 * Mathf.PI / turretEightPointList.Count)), -1);
 			turretEightPointList [i].transform.Rotate (new Vector3 (0, 0, 90 + 45 * i ));

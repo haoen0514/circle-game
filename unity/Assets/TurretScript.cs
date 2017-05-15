@@ -5,6 +5,7 @@ public class TurretScript : MonoBehaviour {
 	public Rigidbody bullet;
 	private bool shoot = true;
 	Setup setUpScript;
+	private Quaternion rotation;
 	GameTempoScript gameTempoScript;
 	public Text gameOverText;
 	// Use this for initialization
@@ -95,11 +96,14 @@ public class TurretScript : MonoBehaviour {
 	void OnTriggerEnter(Collider other){
 		if (shoot == true) {
 			if (other.gameObject.name == "Pointer") {
+				rotation = Quaternion.Euler(this.gameObject.transform.rotation.eulerAngles + new Vector3(0,0,230));
+				//Debug.Log (rotation.eulerAngles);
+
 				Rigidbody instantiatedProjectile = Instantiate (bullet,
-					                                  this.gameObject.transform.position,
-					                                  this.gameObject.transform.rotation)
-				as Rigidbody;
-				instantiatedProjectile.velocity = new Vector3 (this.gameObject.transform.position.x, this.gameObject.transform.position.y, 0).normalized;
+					this.gameObject.transform.position,
+					rotation)as Rigidbody;
+
+				instantiatedProjectile.velocity = new Vector3 (this.gameObject.transform.position.x, this.gameObject.transform.position.y,0).normalized;
 			}
 		}
 
