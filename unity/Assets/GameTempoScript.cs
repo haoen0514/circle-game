@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class GameTempoScript : MonoBehaviour {
 
 //	public List<bool> gameTempo = new List<bool> ();
+	public List<GameObject> eightPieces = new List<GameObject>();
 	public bool[,] gameTempo = new bool[30, 30];
 	public int tempo = 1;
 	public int bpm;
@@ -45,15 +46,9 @@ public class GameTempoScript : MonoBehaviour {
 		}
 	}
 	void Spawn(){
-//		for (int i = 0; i < tempo; i++) {
-//			if (gameTempo [currentCount+i] == true) {
-//				this.gameObject.transform.GetChild ((currentCount + i) % tempo).GetComponent<EnemySpawnPointScript> ().SpawnEnemy ();
-//			}
-//		}
-//		currentCount += tempo;
 		for(int i = 0; i < tempo; i++){
 			if (gameTempo [currentCount, i] == true) {
-				this.gameObject.transform.GetChild (i).GetComponent<EnemySpawnPointScript> ().SpawnEnemy ();
+//				this.gameObject.transform.GetChild (i).GetComponent<EnemySpawnPointScript> ().SpawnEnemy ();
 			}
 		}
 		currentCount += 1;

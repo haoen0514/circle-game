@@ -10,15 +10,33 @@ public class PointerMovementScript : MonoBehaviour {
 	public GameObject centerP;
 	public Rigidbody ball;
 	public GameTempoScript GameTempoScript;
+	public GameObject innerPointer;
+	public GameObject outerPointer;
+	float timer1 = 0f;
+	float timer2 = 0f;
+	private int innerPointerCounter = 1;
+	private int outerPointerCounter = 2;
 
 	void Start () {
 	
 	}
 
 	void Update () {	
+		timer1 += Time.deltaTime;
+		timer2 += Time.deltaTime;
 		if (GameTempoScript.start) {
-			float degPerSec = 360f / GameTempoScript.secPerRound;
-			pointer.transform.Rotate (Vector3.forward * degPerSec * Time.deltaTime);
+			if (timer1 > GameTempoScript.secPerRound / 8) {
+				innerPointer.transform.GetChild ((innerPointerCounter - 1) % 8).gameObject.SetActive (false);
+				innerPointer.transform.GetChild (innerPointerCounter % 8).gameObject.SetActive (true);
+				innerPointerCounter += 1;
+				timer1 = 0f;
+			}
+			if (timer2 > GameTempoScript.secPerRound / 16) {
+				outerPointer.transform.GetChild ((outerPointerCounter - 1) % 16).gameObject.SetActive (false);
+				outerPointer.transform.GetChild (outerPointerCounter % 16).gameObject.SetActive (true);
+				outerPointerCounter += 1;
+				timer2 = 0f;
+			}
 		}
 	}
 

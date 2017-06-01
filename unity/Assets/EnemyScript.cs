@@ -21,7 +21,6 @@ public class EnemyScript : MonoBehaviour {
 				                    this.gameObject.transform.position,
 				                    this.gameObject.transform.rotation);
 //			audio.Play ();
-			Debug.Log ("MingWei123");
 			Destroy(this.gameObject);
 
 
