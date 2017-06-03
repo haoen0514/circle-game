@@ -12,6 +12,9 @@ public class PointerMovementScript : MonoBehaviour {
 	public GameTempoScript GameTempoScript;
 	public GameObject innerPointer;
 	public GameObject outerPointer;
+	public GameObject outerTurret;
+	public GameObject innerTurret;
+	public GameObject FirePoint;
 	float timer1 = 0f;
 	float timer2 = 0f;
 	private int innerPointerCounter = 1;
@@ -26,12 +29,18 @@ public class PointerMovementScript : MonoBehaviour {
 		timer2 += Time.deltaTime;
 		if (GameTempoScript.start) {
 			if (timer1 > GameTempoScript.secPerRound / 8) {
+				if (innerTurret.transform.GetChild (innerPointerCounter % 8).gameObject.activeSelf) {
+					FirePoint.transform.GetChild (innerPointerCounter % 8).gameObject.GetComponent<TurretScript> ().Shoot (innerPointerCounter % 8);
+				}
 				innerPointer.transform.GetChild ((innerPointerCounter - 1) % 8).gameObject.SetActive (false);
 				innerPointer.transform.GetChild (innerPointerCounter % 8).gameObject.SetActive (true);
 				innerPointerCounter += 1;
 				timer1 = 0f;
 			}
 			if (timer2 > GameTempoScript.secPerRound / 16) {
+				if (outerTurret.transform.GetChild (outerPointerCounter % 16).gameObject.activeSelf) {
+					outerTurret.transform.GetChild (outerPointerCounter % 16).gameObject.GetComponent<TurretScript> ().Shoot (outerPointerCounter % 16);
+				}
 				outerPointer.transform.GetChild ((outerPointerCounter - 1) % 16).gameObject.SetActive (false);
 				outerPointer.transform.GetChild (outerPointerCounter % 16).gameObject.SetActive (true);
 				outerPointerCounter += 1;

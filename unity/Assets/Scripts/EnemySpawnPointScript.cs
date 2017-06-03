@@ -5,12 +5,13 @@ using UnityEngine.UI;
 
 public class EnemySpawnPointScript : MonoBehaviour {
 
-	public Rigidbody enemy;
+	public int index;
+	public Rigidbody2D enemy;
 	public Text gameOverText;
-
+	public int index1;
 	// Use this for initialization
 	void Start () {
-//		InvokeRepeating ("SpawnEnemy", 0f, 2f);
+		InvokeRepeating ("SpawnEnemy", 0f, 2f);
 	}
 	
 	// Update is called once per frame
@@ -19,11 +20,13 @@ public class EnemySpawnPointScript : MonoBehaviour {
 	}
 
 	public void SpawnEnemy(){
-		Rigidbody instantiatedProjectile = Instantiate (enemy,
-			this.gameObject.transform.position,
-			this.gameObject.transform.rotation)
-			as Rigidbody;
-		instantiatedProjectile.velocity =  new Vector3 (-this.gameObject.transform.position.x, -this.gameObject.transform.position.y, 0).normalized;
+		Rigidbody2D instantiatedProjectile = Instantiate (enemy, transform.position, transform.rotation)
+			as Rigidbody2D;
+		if(index1 == 1)
+			instantiatedProjectile.transform.Rotate (0, 0, 180 + 45f * index);
+		else
+			instantiatedProjectile.transform.Rotate (0, 0, 134.3f + 22.5f * index);
+		instantiatedProjectile.velocity =  new Vector3 (-this.gameObject.transform.position.x, -this.gameObject.transform.position.y).normalized;
 		instantiatedProjectile.velocity = instantiatedProjectile.velocity * 0.8f;
 	}
 	void OnTriggerEnter(Collider other){

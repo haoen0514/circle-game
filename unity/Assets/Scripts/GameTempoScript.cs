@@ -46,11 +46,11 @@ public class GameTempoScript : MonoBehaviour {
 		}
 	}
 	void Spawn(){
-		for(int i = 0; i < tempo; i++){
-			if (gameTempo [currentCount, i] == true) {
+//		for(int i = 0; i < tempo; i++){
+//			if (gameTempo [currentCount, i] == true) {
 //				this.gameObject.transform.GetChild (i).GetComponent<EnemySpawnPointScript> ().SpawnEnemy ();
-			}
-		}
-		currentCount += 1;
+//			}
+//		}
+//		currentCount += 1;
 	}
 }
