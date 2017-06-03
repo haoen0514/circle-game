@@ -27,6 +27,7 @@ You will need to download the library of oscP5 in processing.
 
 
 ### Game Play
+update
 ![screenshot](https://github.com/vibertthio/circle-game/blob/master/images/screenshot.png)
 
 
