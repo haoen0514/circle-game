@@ -7,6 +7,8 @@ public class BulletScript : MonoBehaviour {
 	private Object ps;
 	private AudioSource audio;
 	public int index;
+	public float scaleFor16Bullet = 0.006f;
+	public float scaleFor8Bullet = 0.0065f;
 	void Start () {
 		audio = this.gameObject.GetComponent<AudioSource> ();
 	}
@@ -14,9 +16,9 @@ public class BulletScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(index == 1)
-			transform.localScale += new Vector3 (0.006f, 0.006f, 0); //for 16enemy
+			transform.localScale += new Vector3 (scaleFor16Bullet, scaleFor16Bullet, 0); //for 16bullet
 		else
-			transform.localScale += new Vector3 (0.0065f, 0.0065f, 0); //for 8enemy
+			transform.localScale += new Vector3 (scaleFor8Bullet,scaleFor8Bullet, 0); //for 8bullet
 	}
 	void OnTriggerEnter2D(Collider2D other){
 		

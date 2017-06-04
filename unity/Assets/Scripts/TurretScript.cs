@@ -4,9 +4,9 @@ using UnityEngine.UI;
 public class TurretScript : MonoBehaviour {
 	public Rigidbody2D bullet;
 	private bool shoot = true;
-	Setup setUpScript;
+	public Setup setup;
 	private Quaternion rotation;
-	GameTempoScript gameTempoScript;
+	public GameTempoScript gameTempoScript;
 	public Text gameOverText;
 	public int index;
 	// Use this for initialization
@@ -118,6 +118,6 @@ public class TurretScript : MonoBehaviour {
 		else
 			instantiatedProjectile.transform.Rotate (0, 0, 202.5f);
 		instantiatedProjectile.velocity =  new Vector3 (this.gameObject.transform.position.x, this.gameObject.transform.position.y).normalized;
-		instantiatedProjectile.velocity = instantiatedProjectile.velocity * 0.8f;
+		instantiatedProjectile.velocity = instantiatedProjectile.velocity * (setup.bigCircleRadius - setup.smallCircleRadius / gameTempoScript.secPerRound);
 	}
 }

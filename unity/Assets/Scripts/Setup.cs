@@ -3,13 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class Setup : MonoBehaviour {
-//	public float smallCircleRadius;
+	public float smallCircleRadius = 1.45f;
+	public float bigCircleRadius = 5.7f;
 	public GameObject eightFirePoint;
-	public float bigCircleRadius;
 	public GameObject outerTurret;
 	public GameObject innerTurret;
-//	public GameObject smallCircle;
-//	public GameObject bigCircle;
+	public GameObject smallCircle;
+	public GameObject bigCircle;
 //	public GameObject pointer;
 //	public List<GameObject> turretEightPointList = new List<GameObject>();
 	public GameObject enemyEightPointList;
@@ -26,10 +26,10 @@ public class Setup : MonoBehaviour {
 //			innerTurret.transform.GetChild(i).transform.position = new Vector3 (1.1f * Mathf.Cos (i * (2 * Mathf.PI / 8) + Mathf.PI / 8), 1.1f * Mathf.Sin (i * (2 * Mathf.PI / 8) + Mathf.PI / 8), -1);
 //		}
 		for (int i = 0; i < 8; i++) {
-			eightFirePoint.transform.GetChild(i).transform.position = new Vector3 (1.45f * Mathf.Cos (i * (2 * Mathf.PI / 8) + Mathf.PI / 8), 1.45f * Mathf.Sin (i * (2 * Mathf.PI / 8) + Mathf.PI / 8), -1);
+			eightFirePoint.transform.GetChild(i).transform.position = new Vector3 (smallCircleRadius * Mathf.Cos (i * (2 * Mathf.PI / 8) + Mathf.PI / 8), smallCircleRadius * Mathf.Sin (i * (2 * Mathf.PI / 8) + Mathf.PI / 8), -1);
 		}
 		for (int i = 0; i < 16; i++) {
-			outerTurret.transform.GetChild (i).transform.position = new Vector3 (1.45f * Mathf.Cos (i * (2 * Mathf.PI / 16) + Mathf.PI / 16), 1.45f * Mathf.Sin (i * (2 * Mathf.PI / 16) + Mathf.PI / 16), -1);
+			outerTurret.transform.GetChild (i).transform.position = new Vector3 (smallCircleRadius * Mathf.Cos (i * (2 * Mathf.PI / 16) + Mathf.PI / 16), smallCircleRadius * Mathf.Sin (i * (2 * Mathf.PI / 16) + Mathf.PI / 16), -1);
 		}
 		for (int i = 0; i < 8; i++) {
 			enemyEightPointList.transform.GetChild(i).transform.position = new Vector3 (bigCircleRadius * Mathf.Cos (i * (2 * Mathf.PI / 8) + Mathf.PI / 8), bigCircleRadius * Mathf.Sin (i * (2 * Mathf.PI / 8) + Mathf.PI / 8), -1);

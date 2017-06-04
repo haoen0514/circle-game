@@ -9,6 +9,9 @@ public class EnemySpawnPointScript : MonoBehaviour {
 	public Rigidbody2D enemy;
 	public Text gameOverText;
 	public int index1;
+	public Setup setup;
+	public GameTempoScript gameTempoScript;
+
 	// Use this for initialization
 	void Start () {
 		InvokeRepeating ("SpawnEnemy", 0f, 2f);
@@ -27,7 +30,7 @@ public class EnemySpawnPointScript : MonoBehaviour {
 		else
 			instantiatedProjectile.transform.Rotate (0, 0, 134.3f + 22.5f * index);
 		instantiatedProjectile.velocity =  new Vector3 (-this.gameObject.transform.position.x, -this.gameObject.transform.position.y).normalized;
-		instantiatedProjectile.velocity = instantiatedProjectile.velocity * 0.8f;
+		instantiatedProjectile.velocity = instantiatedProjectile.velocity * (setup.bigCircleRadius - setup.smallCircleRadius / gameTempoScript.secPerRound);
 	}
 	void OnTriggerEnter(Collider other){
 
