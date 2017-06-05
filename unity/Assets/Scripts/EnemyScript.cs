@@ -8,19 +8,28 @@ public class EnemyScript : MonoBehaviour {
 	private Object ps;
 	private AudioSource audio;
 	public int index;
-	public float scaleFor16Enenmy = 0.0065f;
-	public float scaleFor8Enemy = 0.006f;
+	public float scaleFor16Enenmy = 0.1f;
+	public float scaleFor8Enemy = 0.004f;
+	private Vector3 initial_scale_8;
+	private Vector3 initial_scale_16;
+
 	void Start () {
 		audio = this.gameObject.GetComponent<AudioSource> ();
+		if (index == 1)
+			initial_scale_8 = transform.localScale;
+		else
+			initial_scale_16 = transform.localScale;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if(index == 1){
-			transform.localScale -= new Vector3 (scaleFor16Enenmy, scaleFor16Enenmy, 0); //for 16enemy
+			transform.localScale = initial_scale_8 * (Mathf.Sqrt((transform.position.x * transform.position.x  + transform.position.y * transform.position.y )) / 5.7f);
+			Debug.Log (transform.position.x);
+			Debug.Log(transform.position.y);
 		}
 		else{
-			transform.localScale -= new Vector3 (scaleFor8Enemy, scaleFor8Enemy, 0); //for 8enemy
+			transform.localScale = initial_scale_16 * Mathf.Sqrt((transform.position.x * transform.position.x  + transform.position.y * transform.position.y )) / 5.7f;
 		}
 	}
 	void OnTriggerEnter2D(Collider2D other){

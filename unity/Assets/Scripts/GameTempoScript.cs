@@ -27,14 +27,21 @@ public class GameTempoScript : MonoBehaviour {
 //					innerGameTempo [i, j] = true;
 //		}
 		innerGameTempo [0, 3] = true;
-		innerGameTempo [0, 4] = true;
 		innerGameTempo [1, 5] = true;
 
-		outerGameTempo [0, 3] = true;
-		outerGameTempo [0, 4] = true;
-		outerGameTempo [1, 5] = true;
-		outerGameTempo [1, 8] = true;
-		outerGameTempo [1, 9] = true;
+		innerGameTempo [2, 3] = true;
+		innerGameTempo [3, 5] = true;
+
+		innerGameTempo [7, 2] = true;
+		innerGameTempo [6, 1] = true;
+		innerGameTempo [5, 5] = true;
+		innerGameTempo [4, 6] = true;
+
+		outerGameTempo [8, 3] = true;
+		outerGameTempo [9, 4] = true;
+		outerGameTempo [10, 5] = true;
+		outerGameTempo [11, 8] = true;
+		outerGameTempo [12, 9] = true;
 	}
 
 	
