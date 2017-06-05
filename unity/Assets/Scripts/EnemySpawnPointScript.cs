@@ -14,7 +14,7 @@ public class EnemySpawnPointScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		InvokeRepeating ("SpawnEnemy", 0f, 2f);
+//		InvokeRepeating ("SpawnEnemy", 0f, 2f);
 	}
 	
 	// Update is called once per frame
@@ -30,7 +30,7 @@ public class EnemySpawnPointScript : MonoBehaviour {
 		else
 			instantiatedProjectile.transform.Rotate (0, 0, 134.3f + 22.5f * index);
 		instantiatedProjectile.velocity =  new Vector3 (-this.gameObject.transform.position.x, -this.gameObject.transform.position.y).normalized;
-		instantiatedProjectile.velocity = instantiatedProjectile.velocity * (setup.bigCircleRadius - setup.smallCircleRadius / gameTempoScript.secPerRound);
+//		instantiatedProjectile.velocity = instantiatedProjectile.velocity * (setup.bigCircleRadius - setup.smallCircleRadius / gameTempoScript.secPerRound);
 	}
 	void OnTriggerEnter(Collider other){
 

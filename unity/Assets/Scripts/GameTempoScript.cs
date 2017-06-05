@@ -5,7 +5,8 @@ public class GameTempoScript : MonoBehaviour {
 
 //	public List<bool> gameTempo = new List<bool> ();
 	public List<GameObject> eightPieces = new List<GameObject>();
-	public bool[,] gameTempo = new bool[30, 30];
+	public bool[,] innerGameTempo = new bool[30, 30];
+	public bool[,] outerGameTempo = new bool[30, 30];
 	public int tempo = 1;
 	public int bpm;
 	public bool start = false;
@@ -15,16 +16,25 @@ public class GameTempoScript : MonoBehaviour {
 	public float secPerRound;
 	public Setup setup;
 	private AudioSource audio;
+	public GameObject sixteenEnemy;
+	public GameObject eightEnemy;
+
 	// Use this for initializations
 	void Start () {
-		for (int i = 0; i < 30; i++) {
-			for (int j = 0; j < 8; j++)
-				if (Random.value > -1)
-					gameTempo [i, j] = true;
-		}
-		gameTempo [0, 3] = true;
-		gameTempo [0, 4] = true;
-		gameTempo [1, 5] = true;
+//		for (int i = 0; i < 30; i++) {
+//			for (int j = 0; j < 8; j++)
+//				if (Random.value > -1)
+//					innerGameTempo [i, j] = true;
+//		}
+		innerGameTempo [0, 3] = true;
+		innerGameTempo [0, 4] = true;
+		innerGameTempo [1, 5] = true;
+
+		outerGameTempo [0, 3] = true;
+		outerGameTempo [0, 4] = true;
+		outerGameTempo [1, 5] = true;
+		outerGameTempo [1, 8] = true;
+		outerGameTempo [1, 9] = true;
 	}
 
 	
@@ -46,11 +56,16 @@ public class GameTempoScript : MonoBehaviour {
 		}
 	}
 	void Spawn(){
-//		for(int i = 0; i < tempo; i++){
-//			if (gameTempo [currentCount, i] == true) {
-//				this.gameObject.transform.GetChild (i).GetComponent<EnemySpawnPointScript> ().SpawnEnemy ();
-//			}
-//		}
-//		currentCount += 1;
+		for(int i = 0; i < 8; i++){
+			if (innerGameTempo [currentCount, i] == true) {
+				eightEnemy.transform.GetChild (i).GetComponent<EnemySpawnPointScript> ().SpawnEnemy ();
+			}
+		}
+		for(int i = 0; i < 16; i++){
+			if (innerGameTempo [currentCount, i] == true) {
+				sixteenEnemy.transform.GetChild (i).GetComponent<EnemySpawnPointScript> ().SpawnEnemy ();
+			}
+		}
+		currentCount += 1;
 	}
 }
