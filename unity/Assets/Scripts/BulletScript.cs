@@ -21,6 +21,17 @@ public class BulletScript : MonoBehaviour {
 			transform.localScale += new Vector3 (scaleFor8Bullet,scaleFor8Bullet, 0); //for 8bullet
 	}
 	void OnTriggerEnter2D(Collider2D other){
-		
+		if(index == 1)
+		if (other.name == "16enemy(Clone)" || other.gameObject.name == "Turret") {
+			Destroy(this.gameObject);
+
+
+		}	
+		else
+		if (other.name == "8enemy(Clone)" || other.gameObject.name == "Turret") {
+			Destroy(this.gameObject);
+
+
+		}	
 	}
 }
