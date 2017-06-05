@@ -8,8 +8,8 @@ public class EnemyScript : MonoBehaviour {
 	private Object ps;
 	private AudioSource audio;
 	public int index;
-	public float scaleFor16Enenmy = 0.01f;
-	public float scaleFor8Enemy = 0.01f;
+	public float scaleFor16Enenmy = 0.0065f;
+	public float scaleFor8Enemy = 0.006f;
 	void Start () {
 		audio = this.gameObject.GetComponent<AudioSource> ();
 	}

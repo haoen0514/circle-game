@@ -7,8 +7,8 @@ public class BulletScript : MonoBehaviour {
 	private Object ps;
 	private AudioSource audio;
 	public int index;
-	public float scaleFor16Bullet = 0.006f;
-	public float scaleFor8Bullet = 0.0065f;
+	public float scaleFor16Bullet = 0.01f;
+	public float scaleFor8Bullet = 0.01f;
 	void Start () {
 		audio = this.gameObject.GetComponent<AudioSource> ();
 	}
