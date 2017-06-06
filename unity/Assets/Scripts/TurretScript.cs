@@ -112,12 +112,13 @@ public class TurretScript : MonoBehaviour {
 	public void Shoot(int index1){
 		Rigidbody2D instantiatedProjectile = Instantiate (bullet, transform.position, transform.rotation)
 			as Rigidbody2D;
-		Debug.Log (index1);
-		if(index == 1)
+		if (index == 1)
 			instantiatedProjectile.transform.Rotate (0, 0, 225 + 45f * index1);
-		else
+		else {
+			Debug.Log (instantiatedProjectile);
 			instantiatedProjectile.transform.Rotate (0, 0, 202.5f);
-		instantiatedProjectile.velocity =  new Vector2 (transform.position.x, transform.position.y).normalized;
+		}
+		instantiatedProjectile.velocity = new Vector2 (transform.position.x, transform.position.y).normalized;
 		instantiatedProjectile.velocity = instantiatedProjectile.velocity * ((setup.bigCircleRadius - setup.smallCircleRadius) / gameTempoScript.secPerRound);
 	}
 }

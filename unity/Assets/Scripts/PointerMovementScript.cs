@@ -16,9 +16,9 @@ public class PointerMovementScript : MonoBehaviour {
 	public GameObject innerTurret;
 	public GameObject FirePoint;
 	float timer = 0f;
-	float timer1 = 0f;
+//	float timer1 = 0f;
 	private int innerPointerCounter = 1;
-	private int outerPointerCounter = 2;
+	private int outerPointerCounter = 1;
 	private int counter = 0;
 	void Start () {
 	
@@ -26,7 +26,7 @@ public class PointerMovementScript : MonoBehaviour {
 
 	void FixedUpdate () {	
 		timer += Time.deltaTime;
-		timer1 += Time.deltaTime;
+//		timer1 += Time.deltaTime;
 		if (timer >= GameTempoScript.secPerRound / 16) {
 			if (GameTempoScript.start) {
 				counter++;
@@ -47,15 +47,15 @@ public class PointerMovementScript : MonoBehaviour {
 				outerPointerCounter += 1;
 				timer = 0f;
 			}
-			if (outerPointerCounter % 16 == 2) {
-				for (int i = 0; i < 8; i++) {
-					innerTurret.transform.GetChild (i).gameObject.SetActive (false);
-				}
-				for (int i = 0; i < 16; i++) {
-					outerTurret.transform.GetChild (i).gameObject.SetActive (false);
-				}
-				timer1 = 0f;
-			}
+//			if (outerPointerCounter % 16 == 2) {
+//				for (int i = 0; i < 8; i++) {
+//					innerTurret.transform.GetChild (i).gameObject.SetActive (false);
+//				}
+//				for (int i = 0; i < 16; i++) {
+//					outerTurret.transform.GetChild (i).gameObject.SetActive (false);
+//				}
+//				timer1 = 0f;
+//			}
 		}
 	}
 
