@@ -18,6 +18,7 @@ public class GameTempoScript : MonoBehaviour {
 	private AudioSource audio;
 	public GameObject sixteenEnemy;
 	public GameObject eightEnemy;
+	public PointerMovementScript pointerMovement;
 
 	// Use this for initializations
 	void Start () {
@@ -52,8 +53,10 @@ public class GameTempoScript : MonoBehaviour {
 		roundPerMin = bpm / 4f;
 		secPerRound = 60 / roundPerMin;
 		if (start == true) {
-			if (timer > secPerRound) {
+			if (pointerMovement.spawn) {
+				Debug.Log ("test1");
 				Spawn ();
+				pointerMovement.spawn = false;
 				timer = 0f;
 			}
 		}
