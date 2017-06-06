@@ -69,7 +69,7 @@ public class GameTempoScript : MonoBehaviour {
 			}
 		}
 		for(int i = 0; i < 16; i++){
-			if (innerGameTempo [currentCount, i] == true) {
+			if (outerGameTempo [currentCount, i] == true) {
 				sixteenEnemy.transform.GetChild (i).GetComponent<EnemySpawnPointScript> ().SpawnEnemy ();
 			}
 		}
