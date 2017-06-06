@@ -103,7 +103,6 @@ public class TurretScript : MonoBehaviour {
 				Rigidbody2D instantiatedProjectile = Instantiate (bullet,
 					this.gameObject.transform.position,
 					rotation)as Rigidbody2D;
-
 				instantiatedProjectile.velocity = new Vector3 (this.gameObject.transform.position.x, this.gameObject.transform.position.y).normalized;
 			}
 		}

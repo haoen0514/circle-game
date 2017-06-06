@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System;
+using UnityEngine.UI;
 using System.Collections.Generic;
-
+using System.Diagnostics;
 
 public class PointerMovementScript : MonoBehaviour {
 
@@ -15,17 +15,22 @@ public class PointerMovementScript : MonoBehaviour {
 	public GameObject outerTurret;
 	public GameObject innerTurret;
 	public GameObject FirePoint;
-	float timer = 0f;
+	public Stopwatch stopWatch;
+	long timer ;
 //	float timer1 = 0f;
 	private int innerPointerCounter = 1;
 	private int outerPointerCounter = 1;
 	private int counter = 0;
 	void Start () {
-	
+		stopWatch = Stopwatch.StartNew ();
+
 	}
 
-	void FixedUpdate () {	
-		timer += Time.deltaTime;
+	void FixedUpdate () {		
+//		Debug.Log (timer);
+		timer = stopWatch.ElapsedMilliseconds;
+		Debug.Log (counter);
+//		timer += Time.deltaTime;
 //		timer1 += Time.deltaTime;
 		if (timer >= GameTempoScript.secPerRound / 16) {
 			if (GameTempoScript.start) {
@@ -45,7 +50,9 @@ public class PointerMovementScript : MonoBehaviour {
 				outerPointer.transform.GetChild ((outerPointerCounter - 1) % 16).gameObject.SetActive (false);
 				outerPointer.transform.GetChild (outerPointerCounter % 16).gameObject.SetActive (true);
 				outerPointerCounter += 1;
-				timer = 0f;
+//				timer = 0f;
+//				stopWatch.Reset();
+				stopWatch = Stopwatch.StartNew ();
 			}
 //			if (outerPointerCounter % 16 == 2) {
 //				for (int i = 0; i < 8; i++) {
@@ -57,6 +64,7 @@ public class PointerMovementScript : MonoBehaviour {
 //				timer1 = 0f;
 //			}
 		}
+
 	}
 
 
