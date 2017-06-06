@@ -24,16 +24,13 @@ public class EnemyScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(index == 1){
-			transform.localScale = initial_scale_8 * (Mathf.Sqrt((transform.position.x * transform.position.x  + transform.position.y * transform.position.y )) / 5.7f);
-			Debug.Log (transform.position.x);
-			Debug.Log(transform.position.y);
+			transform.localScale = initial_scale_8 * (Mathf.Sqrt ((transform.position.x * transform.position.x + transform.position.y * transform.position.y)) / 5.7f);
 		}
 		else{
 			transform.localScale = initial_scale_16 * Mathf.Sqrt((transform.position.x * transform.position.x  + transform.position.y * transform.position.y )) / 5.7f;
 		}
 	}
 	void OnTriggerEnter2D(Collider2D other){
-		Debug.Log (other.gameObject.name);
 		if(index == 1)
 			if (other.name == "16bullet(Clone)" || other.gameObject.name == "Turret") {
 				ps = Instantiate (enemyKillEffect,

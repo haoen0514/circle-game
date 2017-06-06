@@ -37,7 +37,6 @@ public class Setup : MonoBehaviour {
 		for (int i = 0; i < 16; i++) {
 			enemySixteenPointList.transform.GetChild (i).transform.position = new Vector3 (bigCircleRadius * Mathf.Cos (i * (2 * Mathf.PI / 16) + Mathf.PI / 16), bigCircleRadius * Mathf.Sin (i * (2 * Mathf.PI / 16) + Mathf.PI / 16), -1);
 		}
-
 	}
 	void Update(){
 	}
