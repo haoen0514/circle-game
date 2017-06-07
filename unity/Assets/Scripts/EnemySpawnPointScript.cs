@@ -26,11 +26,11 @@ public class EnemySpawnPointScript : MonoBehaviour {
 		Rigidbody2D instantiatedProjectile = Instantiate (enemy, transform.position, transform.rotation)
 			as Rigidbody2D;
 		if(index1 == 1)
-			instantiatedProjectile.transform.Rotate (0, 0, 180 + 45f * index);
+			instantiatedProjectile.transform.Rotate (0, 0, 45f + 45f * index);
 		else
-			instantiatedProjectile.transform.Rotate (0, 0, 134.3f + 22.5f * index);
+			instantiatedProjectile.transform.Rotate (0, 0, 45f + 22.5f * index);
 		instantiatedProjectile.velocity =  new Vector3 (-this.gameObject.transform.position.x, -this.gameObject.transform.position.y).normalized;
-//		instantiatedProjectile.velocity = instantiatedProjectile.velocity * (setup.bigCircleRadius - setup.smallCircleRadius / gameTempoScript.secPerRound);
+		instantiatedProjectile.velocity = instantiatedProjectile.velocity * (setup.bigCircleRadius - setup.smallCircleRadius / gameTempoScript.secPerRound);
 	}
 	void OnTriggerEnter(Collider other){
 

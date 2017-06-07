@@ -54,7 +54,6 @@ public class GameTempoScript : MonoBehaviour {
 		secPerRound = 60 / roundPerMin;
 		if (start == true) {
 			if (pointerMovement.spawn) {
-				Debug.Log ("test1");
 				Spawn ();
 				pointerMovement.spawn = false;
 				timer = 0f;

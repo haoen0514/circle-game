@@ -12,6 +12,7 @@ public class EnemyScript : MonoBehaviour {
 	public float scaleFor8Enemy = 0.004f;
 	private Vector3 initial_scale_8;
 	private Vector3 initial_scale_16;
+	public Setup setup;
 
 	void Start () {
 		audio = this.gameObject.GetComponent<AudioSource> ();
@@ -24,13 +25,14 @@ public class EnemyScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(index == 1){
-			transform.localScale = initial_scale_8 * (Mathf.Sqrt ((transform.position.x * transform.position.x + transform.position.y * transform.position.y)) / 5.7f);
+			transform.localScale = initial_scale_8 * Mathf.Sqrt ((transform.position.x * transform.position.x + transform.position.y * transform.position.y)) / 28.6f;
 		}
 		else{
-			transform.localScale = initial_scale_16 * Mathf.Sqrt((transform.position.x * transform.position.x  + transform.position.y * transform.position.y )) / 5.7f;
+			transform.localScale = initial_scale_16 * Mathf.Sqrt((transform.position.x * transform.position.x  + transform.position.y * transform.position.y )) / 28.6f;
 		}
 	}
 	void OnTriggerEnter2D(Collider2D other){
+		Debug.Log (other);
 		if(index == 1)
 			if (other.name == "16bullet(Clone)" || other.gameObject.name == "Turret") {
 				ps = Instantiate (enemyKillEffect,
