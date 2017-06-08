@@ -5,8 +5,40 @@ public class GameTempoScript : MonoBehaviour {
 
 //	public List<bool> gameTempo = new List<bool> ();
 	public List<GameObject> eightPieces = new List<GameObject>();
-	public bool[,] innerGameTempo = new bool[30, 30];
-	public bool[,] outerGameTempo = new bool[30, 30];
+	public int[,] innerGameTempo = new int[15, 8] {
+		{ 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0 },	
+		{ 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0 },	
+		{ 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0 },	
+		{ 0, 0, 0, 0, 0, 0, 0, 0 },
+	};
+	public int[,] outerGameTempo = new int[15, 16]{
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+	};
 	public int tempo = 1;
 	public int bpm;
 	public bool start = false;
@@ -22,27 +54,6 @@ public class GameTempoScript : MonoBehaviour {
 
 	// Use this for initializations
 	void Start () {
-//		for (int i = 0; i < 30; i++) {
-//			for (int j = 0; j < 8; j++)
-//				if (Random.value > -1)
-//					innerGameTempo [i, j] = true;
-//		}
-		innerGameTempo [0, 3] = true;
-		innerGameTempo [1, 5] = true;
-
-		innerGameTempo [2, 3] = true;
-		innerGameTempo [3, 5] = true;
-
-		innerGameTempo [7, 2] = true;
-		innerGameTempo [6, 1] = true;
-		innerGameTempo [5, 5] = true;
-		innerGameTempo [4, 6] = true;
-
-		outerGameTempo [8, 3] = true;
-		outerGameTempo [9, 4] = true;
-		outerGameTempo [10, 5] = true;
-		outerGameTempo [11, 8] = true;
-		outerGameTempo [12, 9] = true;
 	}
 
 	
@@ -66,12 +77,12 @@ public class GameTempoScript : MonoBehaviour {
 	}
 	void Spawn(){
 		for(int i = 0; i < 8; i++){
-			if (innerGameTempo [currentCount, i] == true) {
+			if (innerGameTempo [currentCount, i] == 1) {
 				eightEnemy.transform.GetChild (i).GetComponent<EnemySpawnPointScript> ().SpawnEnemy ();
 			}
 		}
 		for(int i = 0; i < 16; i++){
-			if (innerGameTempo [currentCount, i] == true) {
+			if (outerGameTempo [currentCount, i] == 1) {
 				sixteenEnemy.transform.GetChild (i).GetComponent<EnemySpawnPointScript> ().SpawnEnemy ();
 			}
 		}

@@ -12,16 +12,10 @@ public class OpeningScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		backgroundCircle.transform.DOScaleX (1f, 3f);
-		backgroundCircle.transform.DOScaleY (1f, 3f);
-		Invoke ("innerCircleScale",3f);
 	}
 
 
 	void innerCircleScale(){
-		Debug.Log ("wat");
-		innerCircle.transform.DOScaleX (0.7f, 3f);
-		innerCircle.transform.DOScaleY (0.7f, 3f);
 	}
 	// Update is called once per frame
 	void Update () {

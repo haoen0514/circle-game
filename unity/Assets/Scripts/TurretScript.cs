@@ -39,5 +39,6 @@ public class TurretScript : MonoBehaviour {
 		}
 		instantiatedProjectile.velocity = new Vector2 (transform.position.x, transform.position.y).normalized;
 		instantiatedProjectile.velocity = instantiatedProjectile.velocity * ((setup.bigCircleRadius - setup.smallCircleRadius) / gameTempoScript.secPerRound);
+//		instantiatedProjectile.velocity = instantiatedProjectile.velocity * 2;
 	}
 }

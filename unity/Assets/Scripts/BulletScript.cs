@@ -18,10 +18,6 @@ public class BulletScript : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-//		if(index == 1)
-//			transform.localScale += new Vector3 (0.012f, 0.012f, 0); //for 16bullet
-//		else
-//			transform.localScale += new Vector3 (0.016f,0.016f, 0); //for 8bullet
 		if(index == 0){
 			transform.localScale = initial_scale_8 * Mathf.Sqrt ((transform.position.x * transform.position.x + transform.position.y * transform.position.y)) / 7.28f;
 		}
