@@ -16,17 +16,76 @@ public class Setup : MonoBehaviour {
 //	public List<GameObject> turretEightPointList = new List<GameObject>();
 	public GameObject enemyEightPointList;
 	public GameObject enemySixteenPointList;
+	public GameObject CountDownText;
+	public GameTempoScript gameTempo;
+	int counter = 0;
 	void Start(){
-		bigCircle.transform.DOScaleX (1f, 3f).SetEase(Ease.InQuint);
-		bigCircle.transform.DOScaleY (1f, 3f).SetEase(Ease.InQuint);
-		Invoke ("innerCircleScale",3f);
+		bigCircle.transform.DOScaleX (1f, 1f).SetEase(Ease.OutQuint);
+		bigCircle.transform.DOScaleY (1f, 1f).SetEase(Ease.OutQuint);
+		Invoke ("innerCircleScale",1f);
 	}
 	void Update(){
 	}
 	void innerCircleScale(){
-		smallCircle.transform.DOScaleX (0.7f, 3f).SetEase(Ease.InQuint);
-		smallCircle.transform.DOScaleY (0.7f, 3f).SetEase(Ease.InQuint);
-		Invoke ("SetUpAllElement", 3f);
+		smallCircle.transform.DOScaleX (0.7f, 1f).SetEase(Ease.OutElastic);
+		smallCircle.transform.DOScaleY (0.7f, 1f).SetEase(Ease.OutElastic);
+		Invoke ("SetUpAllElement", 1f);
+		Invoke ("CountDown", 1f);
+	}
+	void CountDown(){
+		switch (counter) {
+			case 0:
+				Invoke("CountDown", 1f);
+				CountDownText.transform.DOScaleX (1f, 1f).SetEase (1 - Ease.OutExpo);
+				CountDownText.transform.DOScaleY (1f, 1f).SetEase (1 - Ease.OutExpo);
+				CountDownText.GetComponent<SpriteRenderer> ().DOFade (1f, 0.5f).SetEase (1 - Ease.OutExpo);
+				Invoke ("FadeOut", 0.5f);
+				break;
+
+			case 1:
+				Invoke("CountDown", 1f);
+				CountDownText.transform.GetChild(0).transform.DOScaleX (1f, 1f).SetEase (1 - Ease.OutExpo);
+				CountDownText.transform.GetChild(0).transform.DOScaleY (1f, 1f).SetEase (1 - Ease.OutExpo);
+				CountDownText.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer> ().DOFade (1f, 0.5f).SetEase (1-Ease.OutExpo);
+				Invoke ("FadeOut", 0.5f);
+				break;
+
+			case 2:
+				Invoke ("CountDown", 2f);
+				CountDownText.transform.GetChild (1).transform.DOScaleX (1f, 1f).SetEase (1 - Ease.OutExpo);
+				CountDownText.transform.GetChild (1).transform.DOScaleY (1f, 1f).SetEase (1 - Ease.OutExpo);
+				CountDownText.transform.GetChild (1).gameObject.GetComponent<SpriteRenderer> ().DOFade (1f, 0.5f).SetEase (1 - Ease.OutExpo);
+				Invoke ("FadeOut", 0.5f);
+				break;
+					
+			case 3:
+				CountDownText.SetActive (false);
+				gameTempo.start = true;
+				counter = 0;
+				break;
+		}
+	}
+	void FadeOut(){
+		switch (counter) {
+			case 0:
+				CountDownText.GetComponent<SpriteRenderer> ().DOFade (0f, 0.5f).SetEase (1 - Ease.OutExpo);
+				counter++;
+				break;
+
+			case 1:
+				CountDownText.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer> ().DOFade (0f, 0.5f).SetEase (1-Ease.OutExpo);
+				counter++;
+				break;
+
+			case 2:
+				CountDownText.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer> ().DOFade (0f, 0.5f).SetEase (1-Ease.OutExpo);
+				counter++;
+				break;
+
+			case 3:
+				break;
+		}
+		
 	}
 	void SetUpAllElement(){
 		smallCircleRadius = smallCircle.GetComponent<Renderer> ().bounds.size.x / 2;

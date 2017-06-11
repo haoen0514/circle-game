@@ -37,8 +37,17 @@ public class StartSceneScript : MonoBehaviour {
 		playLogo.GetComponent<SpriteRenderer> ().DOFade (1f, 1.5f).SetEase(Ease.OutQuart);
 		startButton.GetComponent<SpriteRenderer> ().DOFade (1f, 1.5f).SetEase(Ease.OutElastic);
 	}
+
 	// Update is called once per frame
 	void Update () {
-		
+		for (int i = 0; i < Input.touches.Length; i++) {
+			if (Input.touches [i].phase == TouchPhase.Began) {
+				TouchEvent (Input.touches [i].position);
+			}
+		}
+	}
+
+	void TouchEvent (Vector3 pos){
+
 	}
 }
