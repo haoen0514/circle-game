@@ -9,11 +9,16 @@ public class BulletScript : MonoBehaviour {
 	public int index;
 	private Vector3 initial_scale_8;
 	private Vector3 initial_scale_16;
+	private Setup setup;
 	void Start () {
 		if (index == 0)
 			initial_scale_8 = transform.localScale;
 		else
 			initial_scale_16 = transform.localScale;
+
+		setup = GameObject.Find ("Main Camera").GetComponent<Setup> ();
+
+
 	}
 
 	// Update is called once per frame

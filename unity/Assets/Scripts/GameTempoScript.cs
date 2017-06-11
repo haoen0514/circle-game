@@ -6,12 +6,12 @@ public class GameTempoScript : MonoBehaviour {
 //	public List<bool> gameTempo = new List<bool> ();
 	public List<GameObject> eightPieces = new List<GameObject>();
 	public int[,] innerGameTempo = new int[15, 8] {
-		{ 0, 0, 0, 0, 0, 0, 0, 0 },
-		{ 0, 0, 0, 0, 0, 0, 0, 0 },
-		{ 0, 0, 0, 0, 0, 0, 0, 0 },
-		{ 0, 0, 0, 0, 0, 0, 0, 0 },
-		{ 0, 0, 0, 0, 0, 0, 0, 0 },	
-		{ 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 1, 0, 0, 0 },
+		{ 0, 0, 0, 0, 1, 0, 0, 0 },
+		{ 0, 0, 0, 0, 1, 0, 0, 0 },
+		{ 0, 0, 0, 0, 1, 0, 0, 0 },
+		{ 0, 0, 0, 0, 1, 0, 0, 0 },	
+		{ 0, 0, 0, 0, 1, 0, 0, 0 },
 		{ 0, 0, 0, 0, 0, 0, 0, 0 },
 		{ 0, 0, 0, 0, 0, 0, 0, 0 },
 		{ 0, 0, 0, 0, 0, 0, 0, 0 },

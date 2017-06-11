@@ -18,6 +18,8 @@ public class Setup : MonoBehaviour {
 	public GameObject enemySixteenPointList;
 	public GameObject CountDownText;
 	public GameTempoScript gameTempo;
+	public GameObject Blood;
+	public int bloodNum = 5;
 	int counter = 0;
 	void Start(){
 		bigCircle.transform.DOScaleX (1f, 1f).SetEase(Ease.OutQuint);
@@ -25,6 +27,17 @@ public class Setup : MonoBehaviour {
 		Invoke ("innerCircleScale",1f);
 	}
 	void Update(){
+
+		CheckBloodNum ();
+
+	}
+	void CheckBloodNum(){
+		for (int i = 0; i < 5 - bloodNum; i++) {
+			if (Blood.transform.GetChild (i).gameObject.activeSelf) {
+				Blood.transform.GetChild (i).gameObject.SetActive (false);
+			}
+		}
+	
 	}
 	void innerCircleScale(){
 		smallCircle.transform.DOScaleX (0.7f, 1f).SetEase(Ease.OutElastic);
@@ -61,6 +74,7 @@ public class Setup : MonoBehaviour {
 			case 3:
 				CountDownText.SetActive (false);
 				gameTempo.start = true;
+				Blood.SetActive (true);
 				counter = 0;
 				break;
 		}

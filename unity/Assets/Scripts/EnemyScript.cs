@@ -20,6 +20,9 @@ public class EnemyScript : MonoBehaviour {
 			initial_scale_8 = transform.localScale;
 		else
 			initial_scale_16 = transform.localScale;
+
+
+		setup = GameObject.Find ("Main Camera").GetComponent<Setup> ();
 	}
 	
 	// Update is called once per frame
@@ -32,26 +35,29 @@ public class EnemyScript : MonoBehaviour {
 		}
 	}
 	void OnTriggerEnter2D(Collider2D other){
-		Debug.Log (other);
 		if(index == 1)
 			if (other.name == "16bullet(Clone)" || other.gameObject.name == "Turret") {
+				Debug.Log (other);
 				ps = Instantiate (enemyKillEffect,
 					                    this.gameObject.transform.position,
 					                    this.gameObject.transform.rotation);
-	//			audio.Play ();
+				if (other.name == "Turret") {
+					setup.bloodNum -= 1;
+				}
 				Destroy(this.gameObject);
 
-
+				
 			}	
 		if(index == 2)
 			if (other.name == "8bullet(Clone)" || other.gameObject.name == "Turret") {
+				Debug.Log (other);
 				ps = Instantiate (enemyKillEffect,
 					this.gameObject.transform.position,
 					this.gameObject.transform.rotation);
-				//			audio.Play ();
+				if (other.name == "Turret") {
+					setup.bloodNum -= 1;
+				}
 				Destroy(this.gameObject);
-
-
 			}	
 	}
 }
