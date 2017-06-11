@@ -7,11 +7,11 @@ public class GameTempoScript : MonoBehaviour {
 	public List<GameObject> eightPieces = new List<GameObject>();
 	public int[,] innerGameTempo = new int[15, 8] {
 		{ 0, 0, 0, 0, 1, 0, 0, 0 },
-		{ 0, 0, 0, 0, 1, 0, 0, 0 },
-		{ 0, 0, 0, 0, 1, 0, 0, 0 },
-		{ 0, 0, 0, 0, 1, 0, 0, 0 },
-		{ 0, 0, 0, 0, 1, 0, 0, 0 },	
-		{ 0, 0, 0, 0, 1, 0, 0, 0 },
+		{ 0, 0, 0, 0, 2, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0 },	
+		{ 0, 0, 0, 0, 0, 0, 0, 0 },
 		{ 0, 0, 0, 0, 0, 0, 0, 0 },
 		{ 0, 0, 0, 0, 0, 0, 0, 0 },
 		{ 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -24,8 +24,8 @@ public class GameTempoScript : MonoBehaviour {
 	};
 	public int[,] outerGameTempo = new int[15, 16]{
 		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -77,13 +77,14 @@ public class GameTempoScript : MonoBehaviour {
 	}
 	void Spawn(){
 		for(int i = 0; i < 8; i++){
-			if (innerGameTempo [currentCount, i] == 1) {
-				eightEnemy.transform.GetChild (i).GetComponent<EnemySpawnPointScript> ().SpawnEnemy ();
+			if (innerGameTempo [currentCount, i] != 0) {
+				eightEnemy.transform.GetChild (i).GetComponent<EnemySpawnPointScript> ().SpawnEnemy (innerGameTempo [currentCount, i]);
 			}
 		}
 		for(int i = 0; i < 16; i++){
-			if (outerGameTempo [currentCount, i] == 1) {
-				sixteenEnemy.transform.GetChild (i).GetComponent<EnemySpawnPointScript> ().SpawnEnemy ();
+			if (outerGameTempo [currentCount, i] != 0) {
+				Debug.Log (i);
+				sixteenEnemy.transform.GetChild (i).GetComponent<EnemySpawnPointScript> ().SpawnEnemy (outerGameTempo [currentCount, i]);
 			}
 		}
 		currentCount += 1;

@@ -35,29 +35,27 @@ public class EnemyScript : MonoBehaviour {
 		}
 	}
 	void OnTriggerEnter2D(Collider2D other){
-		if(index == 1)
-			if (other.name == "16bullet(Clone)" || other.gameObject.name == "Turret") {
-				Debug.Log (other);
-				ps = Instantiate (enemyKillEffect,
-					                    this.gameObject.transform.position,
-					                    this.gameObject.transform.rotation);
-				if (other.name == "Turret" && setup.bloodNum != 0) {
-					setup.bloodNum -= 1;
-				}
-				Destroy(this.gameObject);
-
-				
-			}	
-		if(index == 2)
-			if (other.name == "8bullet(Clone)" || other.gameObject.name == "Turret") {
-				Debug.Log (other);
+		Debug.Log (other.name + " "+ index);
+		if (index == 1) {
+			if (other.name == "16bullet(Clone)" || other.name == "Turret") {
 				ps = Instantiate (enemyKillEffect,
 					this.gameObject.transform.position,
 					this.gameObject.transform.rotation);
-				if (other.name == "Turret"&& setup.bloodNum != 0) {
+				if (other.name == "Turret" && setup.bloodNum != 0) {
 					setup.bloodNum -= 1;
 				}
-				Destroy(this.gameObject);
-			}	
+				Destroy (this.gameObject);
+			}
+		} else if (index == 0) {
+			if (other.name == "8bullet(Clone)" || other.name == "Turret") {
+				ps = Instantiate (enemyKillEffect,
+					this.gameObject.transform.position,
+					this.gameObject.transform.rotation);
+				if (other.name == "Turret" && setup.bloodNum != 0) {
+					setup.bloodNum -= 1;
+				}
+				Destroy (this.gameObject);
+			}
+		}
 	}
 }
