@@ -13,6 +13,7 @@ public class EnemySpawnPointScript : MonoBehaviour {
 	public Text gameOverText;
 	public Setup setup;
 	public GameTempoScript gameTempoScript;
+	private float speed = 3.5f;
 
 	// Use this for initialization
 	void Start () {
@@ -36,6 +37,7 @@ public class EnemySpawnPointScript : MonoBehaviour {
 		else
 			instantiatedProjectile.transform.Rotate (0, 0, 45f + 22.5f * index);
 		instantiatedProjectile.velocity =  new Vector3 (-this.gameObject.transform.position.x, -this.gameObject.transform.position.y).normalized;
+		instantiatedProjectile.velocity = instantiatedProjectile.velocity * speed;
 //		instantiatedProjectile.velocity = instantiatedProjectile.velocity * (setup.bigCircleRadius - setup.smallCircleRadius / gameTempoScript.secPerRound);
 	}
 	void OnTriggerEnter(Collider other){
