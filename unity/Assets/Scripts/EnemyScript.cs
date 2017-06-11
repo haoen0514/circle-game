@@ -41,7 +41,7 @@ public class EnemyScript : MonoBehaviour {
 				ps = Instantiate (enemyKillEffect,
 					                    this.gameObject.transform.position,
 					                    this.gameObject.transform.rotation);
-				if (other.name == "Turret") {
+				if (other.name == "Turret" && setup.bloodNum != 0) {
 					setup.bloodNum -= 1;
 				}
 				Destroy(this.gameObject);
@@ -54,7 +54,7 @@ public class EnemyScript : MonoBehaviour {
 				ps = Instantiate (enemyKillEffect,
 					this.gameObject.transform.position,
 					this.gameObject.transform.rotation);
-				if (other.name == "Turret") {
+				if (other.name == "Turret"&& setup.bloodNum != 0) {
 					setup.bloodNum -= 1;
 				}
 				Destroy(this.gameObject);
