@@ -11,7 +11,7 @@ public class OpacityScipt : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		test.DOFade (0f, 2f).SetEase (Ease.OutElastic);;
+		test.DOFade (0f, 2f).SetEase (Ease.OutElastic);
 	}
 	
 	// Update is called once per frame

@@ -34,14 +34,13 @@ public class BulletScript : MonoBehaviour {
 	}
 	void OnTriggerEnter2D(Collider2D other){
 //		Regex
-//		Debug.Log (other);
 		if (index == 1) {
-			if( Regex.IsMatch(other.name, "16enemy", RegexOptions.IgnoreCase) )
+			if( Regex.IsMatch(other.name, "16enemy", RegexOptions.IgnoreCase)||Regex.IsMatch(other.name, "EnemySpawnPoint", RegexOptions.IgnoreCase))
 			{
 				Destroy (this.gameObject);
 			}
 		} else {
-			if( Regex.IsMatch(other.name, "8enemy", RegexOptions.IgnoreCase) )
+			if( Regex.IsMatch(other.name, "8enemy", RegexOptions.IgnoreCase)||Regex.IsMatch(other.name, "EnemySpawnPoint", RegexOptions.IgnoreCase))
 			{
 				Destroy (this.gameObject);
 			}
