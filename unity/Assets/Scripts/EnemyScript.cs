@@ -12,6 +12,7 @@ public class EnemyScript : MonoBehaviour {
 	public float scaleFor8Enemy = 0.004f;
 	private Vector3 initial_scale_8;
 	private Vector3 initial_scale_16;
+	private float scale = 28.6f;
 	public Setup setup;
 
 	void Start () {
@@ -28,10 +29,10 @@ public class EnemyScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(index == 1){
-			transform.localScale = initial_scale_8 * Mathf.Sqrt ((transform.position.x * transform.position.x + transform.position.y * transform.position.y)) / 28.6f;
+			transform.localScale = initial_scale_8 * Mathf.Sqrt ((transform.position.x * transform.position.x + transform.position.y * transform.position.y)) / scale;
 		}
 		else{
-			transform.localScale = initial_scale_16 * Mathf.Sqrt((transform.position.x * transform.position.x  + transform.position.y * transform.position.y )) / 28.6f;
+			transform.localScale = initial_scale_16 * Mathf.Sqrt((transform.position.x * transform.position.x  + transform.position.y * transform.position.y )) / scale;
 		}
 	}
 	void OnTriggerEnter2D(Collider2D other){
