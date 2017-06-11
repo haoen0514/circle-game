@@ -31,13 +31,15 @@ public class BulletScript : MonoBehaviour {
 		}
 	}
 	void OnTriggerEnter2D(Collider2D other){
-		if(index == 1)
-		if (other.name == "16enemy(Clone)" ) {
-			Destroy(this.gameObject);
-		}	
-		else
-		if (other.name == "8enemy(Clone)" ) {
-			Destroy(this.gameObject);
-		}	
+		Debug.Log (other);
+		if (index == 1) {
+			if (other.name == "16enemy(Clone)"|| other.name == "16enemy (1)(Clone)"|| other.name == "16enemy (2)(Clone)"|| other.name == "16enemy (3)(Clone)"|| other.name == "16enemy (4)(Clone)"|| other.name == "16enemy (5)(Clone)"|| other.name == "16enemy (6)(Clone)"|| other.name == "16enemy (7)(Clone)") {
+				Destroy (this.gameObject);
+			}
+		} else {
+			if (other.name == "8enemy(Clone)" || other.name == "8enemy (1)(Clone)" || other.name == "8enemy (2)(Clone)" || other.name == "8enemy (3)(Clone)" || other.name == "8enemy (4)(Clone)" || other.name == "8enemy (5)(Clone)" || other.name == "8enemy (6)(Clone)" || other.name == "8enemy (7)(Clone)") {
+				Destroy (this.gameObject);
+			}
+		}
 	}
 }
