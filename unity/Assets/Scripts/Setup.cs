@@ -22,8 +22,8 @@ public class Setup : MonoBehaviour {
 	public int bloodNum = 5;
 	int counter = 0;
 	void Start(){
-		bigCircle.transform.DOScaleX (1f, 1f).SetEase(Ease.OutQuint);
-		bigCircle.transform.DOScaleY (1f, 1f).SetEase(Ease.OutQuint);
+		bigCircle.transform.DOScaleX (1.5f, 2f).SetEase(Ease.OutQuint);
+		bigCircle.transform.DOScaleY (1.5f, 2f).SetEase(Ease.OutQuint);
 		Invoke ("innerCircleScale",1f);
 	}
 	void Update(){
