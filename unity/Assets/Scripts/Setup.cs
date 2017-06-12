@@ -26,6 +26,7 @@ public class Setup : MonoBehaviour {
 	public Text scoreNumber;
 	public Canvas canvas;
 	public ScoreFeedbackScript ScoreFeedback;
+	public ScoreFeedbackScript ScoreFeedbackNegative;
 
 	int counter = 0;
 	void Start(){
@@ -36,17 +37,8 @@ public class Setup : MonoBehaviour {
 	}
 	void Update(){
 
-		CheckBloodNum ();
+	}
 
-	}
-	void CheckBloodNum(){
-		for (int i = 0; i < 5 - bloodNum; i++) {
-			if (Blood.transform.GetChild (i).gameObject.activeSelf) {
-				Blood.transform.GetChild (i).gameObject.SetActive (false);
-			}
-		}
-	
-	}
 	void innerCircleScale(){
 		smallCircle.transform.DOScaleX (0.7f, 1f).SetEase(Ease.OutElastic);
 		smallCircle.transform.DOScaleY (0.7f, 1f).SetEase(Ease.OutElastic);
@@ -133,8 +125,13 @@ public class Setup : MonoBehaviour {
 	public void AddScore(int value) {
 		score += value;
 		scoreNumber.text = score.ToString ();
-
-		ScoreFeedbackScript sf = Instantiate (ScoreFeedback, canvas.transform);
-		sf.value = value;
+		ScoreFeedbackScript sf;
+		if (value > 0) {
+			sf = Instantiate (ScoreFeedback, canvas.transform);
+		} else {
+			sf = Instantiate (ScoreFeedbackNegative, canvas.transform);
+		}
+		Debug.Log ("value:" + value);
+		sf.ChangeValue (value);
 	}
 }

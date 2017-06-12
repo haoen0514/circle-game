@@ -42,7 +42,7 @@ public class EnemyScript : MonoBehaviour {
 				ps = Instantiate (enemyKillEffect,
 					this.gameObject.transform.position,
 					this.gameObject.transform.rotation);
-				if (other.name == "Turret" && setup.bloodNum != 0) {
+				if (other.name == "Turret") {
 					setup.bloodNum -= 1;
 					setup.AddScore (-50);
 				} else {
@@ -55,7 +55,7 @@ public class EnemyScript : MonoBehaviour {
 				ps = Instantiate (enemyKillEffect,
 					this.gameObject.transform.position,
 					this.gameObject.transform.rotation);
-				if (other.name == "Turret" && setup.bloodNum != 0) {
+				if (other.name == "Turret") {
 					setup.bloodNum -= 1;
 					setup.AddScore (-100);
 				} else {
