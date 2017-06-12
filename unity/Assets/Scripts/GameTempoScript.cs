@@ -75,7 +75,7 @@ public class GameTempoScript : MonoBehaviour {
 		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 4
 		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
 		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 8
 		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -142,6 +142,7 @@ public class GameTempoScript : MonoBehaviour {
 	public GameObject sixteenEnemy;
 	public GameObject eightEnemy;
 	public PointerMovementScript pointerMovement;
+	public Hintscript hint;
 
 	// Use this for initializations
 	void Start () {
@@ -158,6 +159,7 @@ public class GameTempoScript : MonoBehaviour {
 		if (start == true) {
 			if (pointerMovement.spawn) {
 				Spawn ();
+				hint.Hint();
 				pointerMovement.spawn = false;
 				timer = 0f;
 			}
@@ -175,7 +177,6 @@ public class GameTempoScript : MonoBehaviour {
 		}
 		for(int i = 0; i < 16; i++){
 			if (outerGameTempo [currentCount, i] != 0) {
-				Debug.Log (i);
 				sixteenEnemy.transform.GetChild (i).GetComponent<EnemySpawnPointScript> ().SpawnEnemy (outerGameTempo [currentCount, i]);
 			}
 		}
