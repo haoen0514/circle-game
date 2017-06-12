@@ -44,6 +44,9 @@ public class EnemyScript : MonoBehaviour {
 					this.gameObject.transform.rotation);
 				if (other.name == "Turret" && setup.bloodNum != 0) {
 					setup.bloodNum -= 1;
+					setup.AddScore (-50);
+				} else {
+					setup.AddScore (5);
 				}
 				Destroy (this.gameObject);
 			}
@@ -54,6 +57,9 @@ public class EnemyScript : MonoBehaviour {
 					this.gameObject.transform.rotation);
 				if (other.name == "Turret" && setup.bloodNum != 0) {
 					setup.bloodNum -= 1;
+					setup.AddScore (-100);
+				} else {
+					setup.AddScore (10);
 				}
 				Destroy (this.gameObject);
 			}

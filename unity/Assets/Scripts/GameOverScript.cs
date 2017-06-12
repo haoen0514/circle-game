@@ -1,10 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
-
-
 
 public class GameOverScript : MonoBehaviour {
 
@@ -12,14 +11,17 @@ public class GameOverScript : MonoBehaviour {
 	public GameObject playLogo;
 	public GameObject startButton;
 
+	public Text scoreText;
+
 	// Use this for initialization
 	void Start () {
+		scoreText.text = Setup.score.ToString();
 		Invoke ("CircleMoveOut", 0);
 	}
 
 	void CircleMoveOut(){
-		logo.transform.DOScaleX (2.7f, 3f).SetEase(Ease.OutElastic);
-		logo.transform.DOScaleY (2.7f, 3f).SetEase(Ease.OutElastic);
+		logo.transform.DOScaleX (2.0f, 3f).SetEase(Ease.OutElastic);
+		logo.transform.DOScaleY (2.0f, 3f).SetEase(Ease.OutElastic);
 
 		playLogo.transform.DOScaleX (1f, 3f).SetEase(Ease.OutElastic);
 		playLogo.transform.DOScaleY (1f, 3f).SetEase(Ease.OutElastic);

@@ -10,6 +10,7 @@ public class TurretScript : MonoBehaviour {
 	public GameTempoScript gameTempoScript;
 	public Text gameOverText;
 	public int index;
+	private float speed = 40.0f;
 	// Use this for initialization
 	void Start () {
 
@@ -38,7 +39,7 @@ public class TurretScript : MonoBehaviour {
 			instantiatedProjectile.transform.Rotate (0, 0, 202.5f + 22.5f * index1);
 		}
 		instantiatedProjectile.velocity = new Vector2 (transform.position.x, transform.position.y).normalized;
-		instantiatedProjectile.velocity = instantiatedProjectile.velocity * ((setup.bigCircleRadius - setup.smallCircleRadius) / gameTempoScript.secPerRound);
-//		instantiatedProjectile.velocity = instantiatedProjectile.velocity * 2;
+//		instantiatedProjectile.velocity = instantiatedProjectile.velocity * ((setup.bigCircleRadius - setup.smallCircleRadius) / gameTempoScript.secPerRound);
+		instantiatedProjectile.velocity = instantiatedProjectile.velocity * speed;
 	}
 }

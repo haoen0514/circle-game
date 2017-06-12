@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using DG.Tweening;
 
 public class Setup : MonoBehaviour {
@@ -20,10 +21,17 @@ public class Setup : MonoBehaviour {
 	public GameTempoScript gameTempo;
 	public GameObject Blood;
 	public int bloodNum = 5;
+
+	static public int score;
+	public Text scoreNumber;
+	public Canvas canvas;
+	public ScoreFeedbackScript ScoreFeedback;
+
 	int counter = 0;
 	void Start(){
-		bigCircle.transform.DOScaleX (1.5f, 2f).SetEase(Ease.OutQuint);
-		bigCircle.transform.DOScaleY (1.5f, 2f).SetEase(Ease.OutQuint);
+		score = 0;
+		bigCircle.transform.DOScaleX (1.5f, 4f).SetEase(Ease.OutQuint);
+		bigCircle.transform.DOScaleY (1.5f, 4f).SetEase(Ease.OutQuint);
 		Invoke ("innerCircleScale",1f);
 	}
 	void Update(){
@@ -119,5 +127,14 @@ public class Setup : MonoBehaviour {
 	}
 	public void ChangeBigCircleR(float radius){
 		bigCircleRadius = radius;
+	}
+
+
+	public void AddScore(int value) {
+		score += value;
+		scoreNumber.text = score.ToString ();
+
+		ScoreFeedbackScript sf = Instantiate (ScoreFeedback, canvas.transform);
+		sf.value = value;
 	}
 }
