@@ -35,40 +35,40 @@ public class Hintscript : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		for (int i = 0; i < Input.touches.Length; i++) {
-			//			Debug.Log ("Point "+Input.touches[i].fingerId +":" + Input.touches[i].position);
-			if (Input.touches [i].phase == TouchPhase.Began) {
-				TouchEvent (Input.touches [i].position);
-			}
-		}
+//		for (int i = 0; i < Input.touches.Length; i++) {
+//			//			Debug.Log ("Point "+Input.touches[i].fingerId +":" + Input.touches[i].position);
+//			if (Input.touches [i].phase == TouchPhase.Began) {
+//				TouchEvent (Input.touches [i].position);
+//			}
+//		}
 	}
-	private void TouchEvent (Vector3 screenPos) {
-		screenPos.x -= width / 2;
-		screenPos.y -= height / 2;
-		//			Debug.Log ("Point "+Input.touches[i].fingerId +":" + screenPos);
-		float angle = (Mathf.Atan2(screenPos.y, screenPos.x) * Mathf.Rad2Deg);
-		if (angle < 0) {
-			angle += 360.0f;
-		}
-
-		Debug.Log ("Angle : " + angle);
-		if (screenPos.magnitude < senseRadius) {
-			//			Debug.Log ("in");
-			int index = Mathf.FloorToInt(angle / innerDeltaAngle);
-			Debug.Log (index);
-			HintInnerTurrets [index].SetActive (
-				 false
-			);
-		} else {
-			//			Debug.Log ("out");
-			int index = Mathf.FloorToInt(angle / outerDeltaAngle);
-			Debug.Log (index);
-			HintOuterTurrets [index].SetActive (
-				false 
-			);
-		}
-	}
-
+//	private void TouchEvent (Vector3 screenPos) {
+//		screenPos.x -= width / 2;
+//		screenPos.y -= height / 2;
+//		//			Debug.Log ("Point "+Input.touches[i].fingerId +":" + screenPos);
+//		float angle = (Mathf.Atan2(screenPos.y, screenPos.x) * Mathf.Rad2Deg);
+//		if (angle < 0) {
+//			angle += 360.0f;
+//		}
+//
+//		Debug.Log ("Angle : " + angle);
+//		if (screenPos.magnitude < senseRadius) {
+//			//			Debug.Log ("in");
+//			int index = Mathf.FloorToInt(angle / innerDeltaAngle);
+//			Debug.Log (index);
+//			HintInnerTurrets [index].SetActive (
+//				 false
+//			);
+//		} else {
+//			//			Debug.Log ("out");
+//			int index = Mathf.FloorToInt(angle / outerDeltaAngle);
+//			Debug.Log (index);
+//			HintOuterTurrets [index].SetActive (
+//				false 
+//			);
+//		}
+//	}
+//
 	public void Hint(){
 		Debug.Log ("inside hint");
 		if (round_count == 59)

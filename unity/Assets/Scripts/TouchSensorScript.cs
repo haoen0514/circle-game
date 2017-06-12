@@ -21,7 +21,6 @@ public class TouchSensorScript : MonoBehaviour {
 	void Start () {
 		height = Screen.height;
 		width = Screen.width;
-
 		innerDeltaAngle = 360.0f / innerDivision;
 		outerDeltaAngle = 360.0f / outerDivision;
 	}

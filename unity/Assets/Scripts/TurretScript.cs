@@ -10,7 +10,7 @@ public class TurretScript : MonoBehaviour {
 	public GameTempoScript gameTempoScript;
 	public Text gameOverText;
 	public int index;
-	private float speed = 40.0f;
+	private float speed = 100.0f;
 	// Use this for initialization
 	void Start () {
 
