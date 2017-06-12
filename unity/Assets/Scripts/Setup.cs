@@ -82,7 +82,7 @@ public class Setup : MonoBehaviour {
 			case 3:
 				CountDownText.SetActive (false);
 				gameTempo.start = true;
-				Blood.SetActive (true);
+//				Blood.SetActive (true);
 				counter = 0;
 				break;
 		}

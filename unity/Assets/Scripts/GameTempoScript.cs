@@ -159,7 +159,7 @@ public class GameTempoScript : MonoBehaviour {
 		if (start == true) {
 			if (pointerMovement.spawn) {
 				Spawn ();
-				hint.Hint();
+//				hint.Hint();
 				pointerMovement.spawn = false;
 				timer = 0f;
 			}
