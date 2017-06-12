@@ -71,6 +71,8 @@ public class Hintscript : MonoBehaviour {
 
 	public void Hint(){
 		Debug.Log ("inside hint");
+		if (round_count == 59)
+			return;
 		for(int i = 0; i < 8; i++){
 			if (enemy_8_array [round_count+1, i] != 0) {
 				Debug.Log ("round = " + round_count.ToString());
