@@ -48,8 +48,8 @@ public class Setup : MonoBehaviour {
 	
 	}
 	void innerCircleScale(){
-		smallCircle.transform.DOScaleX (0.7f, 1f).SetEase(Ease.OutElastic);
-		smallCircle.transform.DOScaleY (0.7f, 1f).SetEase(Ease.OutElastic);
+		smallCircle.transform.DOScaleX (1f, 1f).SetEase(Ease.OutElastic);
+		smallCircle.transform.DOScaleY (1f, 1f).SetEase(Ease.OutElastic);
 		Invoke ("SetUpAllElement", 1f);
 		Invoke ("CountDown", 1f);
 	}
@@ -59,24 +59,24 @@ public class Setup : MonoBehaviour {
 				Invoke("CountDown", 1f);
 				CountDownText.transform.DOScaleX (1f, 1f).SetEase (1 - Ease.OutExpo);
 				CountDownText.transform.DOScaleY (1f, 1f).SetEase (1 - Ease.OutExpo);
-				CountDownText.GetComponent<SpriteRenderer> ().DOFade (1f, 0.5f).SetEase (1 - Ease.OutExpo);
-				Invoke ("FadeOut", 0.5f);
+				CountDownText.GetComponent<SpriteRenderer> ().DOFade (1f, 0.8f).SetEase (1 - Ease.OutExpo);
+				Invoke ("FadeOut", 0.8f);
 				break;
 
 			case 1:
 				Invoke("CountDown", 1f);
 				CountDownText.transform.GetChild(0).transform.DOScaleX (1f, 1f).SetEase (1 - Ease.OutExpo);
 				CountDownText.transform.GetChild(0).transform.DOScaleY (1f, 1f).SetEase (1 - Ease.OutExpo);
-				CountDownText.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer> ().DOFade (1f, 0.5f).SetEase (1-Ease.OutExpo);
-				Invoke ("FadeOut", 0.5f);
+				CountDownText.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer> ().DOFade (1f, 0.8f).SetEase (1-Ease.OutExpo);
+				Invoke ("FadeOut", 0.8f);
 				break;
 
 			case 2:
 				Invoke ("CountDown", 2f);
 				CountDownText.transform.GetChild (1).transform.DOScaleX (1f, 1f).SetEase (1 - Ease.OutExpo);
 				CountDownText.transform.GetChild (1).transform.DOScaleY (1f, 1f).SetEase (1 - Ease.OutExpo);
-				CountDownText.transform.GetChild (1).gameObject.GetComponent<SpriteRenderer> ().DOFade (1f, 0.5f).SetEase (1 - Ease.OutExpo);
-				Invoke ("FadeOut", 0.5f);
+				CountDownText.transform.GetChild (1).gameObject.GetComponent<SpriteRenderer> ().DOFade (1f, 0.8f).SetEase (1 - Ease.OutExpo);
+				Invoke ("FadeOut", 0.8f);
 				break;
 					
 			case 3:

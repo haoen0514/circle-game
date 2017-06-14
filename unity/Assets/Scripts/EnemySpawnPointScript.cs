@@ -13,7 +13,7 @@ public class EnemySpawnPointScript : MonoBehaviour {
 	public Text gameOverText;
 	public Setup setup;
 	public GameTempoScript gameTempoScript;
-	private float speed = 5f;
+	private float speed = 3f;
 
 	// Use this for initialization
 	void Start () {
